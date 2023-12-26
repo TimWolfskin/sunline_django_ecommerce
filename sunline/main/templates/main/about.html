@@ -1,0 +1,177 @@
+{% comment %} {% extends "main/base.html" %} {% endcomment %}
+{% comment %} {% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="mt-5 pt-5 bg-white custom-shadow rounded">
+        <h2 class="m-2"><strong>{{ content }}</strong></h2>
+        <p class="m-2">{{ text_on_page }}</p>
+    </div>
+{% endblock %}
+
+{% block footer %}
+<footer class="py-4 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Home 2023</p>
+    </div>
+</footer>
+{% endblock %} {% endcomment %}
+
+
+
+
+
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{% static "deps/css/style.css" %}">
+</head>
+
+<body>
+    <div class="main">
+        <header class="header">
+            <div class="container">
+                <div class="header__inner">
+                    <a class="logo" href="#">
+                        <h1>Sunline</h1>
+                        <!-- <img src="images/logo.png" alt=""> -->
+                    </a>
+                    <nav class="menu">
+                        <ul class="menu__list">
+                            <li class="menu__list-item">
+                                <a class="menu__list-link" href=" {% url "main:index" %}">Home</a>
+                            </li>
+                            <li class="menu__list-item menu__list-item--dropdown">
+                                <a class="menu__list-link menu__list-link--dropdown" href="#">Products</a>
+                                <ul class="submenu">
+                                    <li class="submenu__item"><a class="submenu__link" href="#">Все товары</a></li>
+                                    <li class="submenu__item"><a class="submenu__link" href="#">Кухня</a></li>
+                                    <li class="submenu__item"><a class="submenu__link" href="#">Спальня</a></li>
+                                    <li class="submenu__item"><a class="submenu__link" href="#">Гостинная</a></li>
+                                    <li class="submenu__item"><a class="submenu__link" href="#">Офис</a></li>
+                                    <li class="submenu__item"><a class="submenu__link" href="#">Фурнитура</a></li>
+                                    <li class="submenu__item"><a class="submenu__link" href="#">Декор</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu__list-item">
+                                <a class="menu__list-link" href="{% url "main:about" %}">About</a>
+                            </li>
+                            <li class="menu__list-item">
+                                <a class="menu__list-link" href="#">Contacts</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="user-actions">
+                        <form class="form" role="search">
+                            <input class="form__input" type="search" placeholder="Search" aria-label="Search">
+                            <button class="form__input-btn" type="submit">Поиск</button>
+                        </form>
+                        <ul class="menu__list user-actions__list">
+                            <li class="menu__list-item user-actions__item">
+                                <a class="user-actions__link " href="#">
+                                    <img class="user-actions__img" src="{% static "deps/icons/user.svg" %}" alt="">
+                                </a>
+                                <ul class=" submenu">
+                                    <li class="submenu__item"><a class="submenu__link" href="#">Корзина</a></li>
+                                    <li class="submenu__item"><a class="submenu__link" href="#">Личный кабинет</a></li>
+                                    <li class="submenu__item"><a class="submenu__link" href="#">Админ панель</a></li>
+                                    <li class="submenu__item"><a class="submenu__link" href="#">Выйти</a></li>
+                                </ul>
+                            </li>
+                            <li class="user-actions__item">
+                                <a class="user-actions__link" href="#">
+                                    <img class="user-actions__img" src="{% static "deps/icons/cart.svg" %}" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+        </header>
+        <main class="main">
+    sdfsdfsdfdsfsdfsd
+        </main>
+        <footer class="footer">
+            <div class="footer__content">
+                <div class="container">
+                    <div class="footer__inner">
+                        <div class="footer__info">
+                            <h6 class="footer__info-title">
+                                Contact Us
+                            </h6>
+                            <p class="footer__info-text">
+                                Keffiyeh poutine etsy, paleo cray put a bird on it microdosing schlitz you probably
+                                occupy
+                            </p>
+                            <a class="info-email" href="mailto:ouremailaddress@email.com">
+                                ouremailaddress@email.com
+                            </a>
+                            <form class="footer__form">
+                                <input class="footer__form-input" type="email" placeholder="Subscribe by email">
+                                <button class="footer__form-button" type="submit">Send</button>
+                            </form>
+                        </div>
+                        <ul class="footer__social">
+                            <li class="footer__social-item">
+                                <a class="footer__social-link footer__social-link--facebook" href="#">Facebook</a>
+                            </li>
+                            <li class="footer__social-item">
+                                <a class="footer__social-link footer__social-link--instagram" href="#">Instagram</a>
+                            </li>
+                            <li class="footer__social-item">
+                                <a class="footer__social-link footer__social-link--pinterest" href="#">Pinterest</a>
+                            </li>
+                            <li class="footer__social-item">
+                                <a class="footer__social-link footer__social-link--whatsapp" href="#">WhatsApp</a>
+                            </li>
+                            <li class="footer__social-item">
+                                <a class="footer__social-link footer__social-link--youtube" href="#">Youtube</a>
+                            </li>
+                        </ul>
+                        <nav class="footer__menu">
+                            <ul class="footer__menu-list">
+                                <li class="footer__menu-item">
+                                    <a class="footer__menu-link" href="#">Delivery</a>
+                                </li>
+                                <li class="footer__menu-item">
+                                    <a class="footer__menu-link" href="#">FAQ</a>
+                                </li>
+                                <li class="footer__menu-item">
+                                    <a class="footer__menu-link" href="#">HELP</a>
+                                </li>
+                                <li class="footer__menu-item">
+                                    <a class="footer__menu-link" href="#">More About Us</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__copyright">
+                <div class="container">
+                    <p>
+                        674 Gonzales Drive. Washington, PA 15301
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="{% static "deps/js/main.js" %}"></script>
+</body>
+
+</html>
