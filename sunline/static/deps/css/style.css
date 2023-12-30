@@ -2,6 +2,10 @@ html {
   box-sizing: border-box;
 }
 
+/* font-family: 'Inter', sans-serif;
+font-family: 'Manrope', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
 *,
 *::after,
 *::before {
@@ -60,6 +64,7 @@ html {
 
 body {
   margin-bottom: 56px;
+  font-family: 'Manrope', sans-serif;
 }
 .footer {
   position: absolute;
@@ -67,28 +72,6 @@ body {
   width: 100%;
   height: 56px;
 }
-
-/* html,
-body {
-  height: 100%;
-}
-
-.wrapper {
-	display: flex;
-	flex-direction: column;
-  height: 100vh;
-  justify-content: space-between;
-	/* min-height: 100%; */
-
-
-/* .main {
-	flex: 1 0 auto;
-}
-
-.footer {
-	flex: 0 0 auto;
-}  */
-
 
 .container {
   max-width: 1220px;
@@ -104,28 +87,23 @@ body {
   align-items: center;
 }
 
-/* .logo {
-    margin: 0 auto;
-} */
-
-/* .menu {
-    padding-right: 15px;
-} */
-
 .menu__list {
   display: flex;
   gap: 35px;
   align-items: center;
 }
 
-/* .menu__list-item {
-    padding-left: 35px;
-    padding-right: 45px;
-} */
-
 .menu__list-link {
   color: rgba(54, 56, 56, 0.9);
   line-height: 22px;
+  transition: all .3s;
+  font-size: 18px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.menu__list-link:hover {
+  color: #ff6f00;
 }
 
 .menu__list-link--active {
@@ -183,21 +161,37 @@ body {
   z-index: 5;
 }
 
+.form {
+  display: flex;
+  justify-content: center;
+  padding-right: 20px;
+}
 
-/* .form__input {
-  display: block;
-	grid-area: search;
-	-webkit-appearance: none;
-	appearance: none;
-	width: 100%;
-	height: 100%;
-	background: none;
-	padding: 0 30px 0 60px;
-	border: none;
-	border-radius: 100px;
-	font: 24px/1 system-ui, sans-serif;
-	outline-offset: -8px;
-} */
+.form__input {
+  padding: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.form__input::placeholder {
+  color: #fff;
+  font-size: 18px;
+}
+
+.form__input-btn {
+  background: #ff6f00;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  text-transform: uppercase;
+  color: white;
+  border-left: none;
+  font-size: 16px;
+  font-family: sans-serif;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  cursor: pointer;
+}
 
 
 .top {
@@ -396,8 +390,6 @@ body {
 }
 
 .footer__copyright {
-  /* background-color: $title;
-      color: #A1A1A1; */
   text-align: center;
   padding: 42px 0 41px;
 }
