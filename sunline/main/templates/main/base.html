@@ -12,6 +12,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Manrope:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{% static "deps/css/style.css" %}">
+    <link rel="stylesheet" href="{% static "deps/css/slick.css" %}">
+    {% comment %} <link rel="stylesheet" href="{% static "deps/css/bootstrap/bootstrap.min.css" %} "> {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="{% static "deps/css/my_css.css" %} "> {% endcomment %}
 </head>
 
 <body>
@@ -79,8 +82,11 @@
                 </div>
         </header>
         <main class="main">
-            {% block header_slider %}
-            {% endblock  %}
+            {% block header_slider %}{% endblock  %}
+
+            {% block catalog_content %}{% endblock  %}
+
+            {% block product_content %}{% endblock  %}
         </main>
         <footer class="footer">
             <div class="footer__content">
@@ -147,6 +153,11 @@
             </div>    
         </footer>
     </div>
+    <script src="{% static "deps/js/jquery/jquery-3.7.0.min.js" %}"></script>
+    <script src="{% static "deps/js/jquery/slick.min.js" %}"></script>
+    <script src="{% static "deps/js/jquery-events.js" %}"></script>
+    <script src="{% static "deps/js/jquery-ajax.js" %}"></script>
+    <script src="{% static "deps/js/bootstrap/bootstrap.bundle.min.js" %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="{% static "deps/js/main.js" %}"></script>
 </body>
