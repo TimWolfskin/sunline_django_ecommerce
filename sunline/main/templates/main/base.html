@@ -35,13 +35,9 @@
                                 <li class="menu__list-item menu__list-item--dropdown">
                                     <a class="menu__list-link menu__list-link--dropdown" href="#">Products</a>
                                     <ul class="submenu">
-                                        <li class="submenu__item"><a class="submenu__link" href="#">Все товары</a></li>
-                                        <li class="submenu__item"><a class="submenu__link" href="#">Кухня</a></li>
-                                        <li class="submenu__item"><a class="submenu__link" href="#">Спальня</a></li>
-                                        <li class="submenu__item"><a class="submenu__link" href="#">Гостинная</a></li>
-                                        <li class="submenu__item"><a class="submenu__link" href="#">Офис</a></li>
-                                        <li class="submenu__item"><a class="submenu__link" href="#">Фурнитура</a></li>
-                                        <li class="submenu__item"><a class="submenu__link" href="#">Декор</a></li>
+                                        {% for category in categories %}
+                                        <li class="submenu__item"><a class="submenu__link" href=" {% url "catalog:index" %} "> {{category.name}} </a></li>                                        
+                                        {% endfor %}
                                     </ul>
                                 </li>
                                 <li class="menu__list-item">
@@ -67,7 +63,7 @@
                                     <ul class=" submenu">
                                         <li class="submenu__item"><a class="submenu__link" href="#">Корзина</a></li>
                                         <li class="submenu__item"><a class="submenu__link" href="#">Личный кабинет</a></li>
-                                        <li class="submenu__item"><a class="submenu__link" href="#">Админ панель</a></li>
+                                        <li class="submenu__item"><a class="submenu__link" href=" {% url "admin:index" %} ">Админ панель</a></li>
                                         <li class="submenu__item"><a class="submenu__link" href="#">Выйти</a></li>
                                     </ul>
                                 </li>
