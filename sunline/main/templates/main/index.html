@@ -1,21 +1,275 @@
-{% extends "main/base.html" %}
+{% extends 'main/base.html' %}
 {% load static %}
-
 
 <!DOCTYPE html>
 <html lang="en">
-
-<main class="main">
-{% block header_slider %}
-<div class="slider">
-    <div class="swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image: url('{% static "deps/images/slide-1.jpg" %}');"></div>
-            <div class="swiper-slide" style="background-image: url('{% static "deps/images/slide-2.jpg" %}');"></div>
-            <div class="swiper-slide" style="background-image: url('{% static "deps/images/slide-3.jpg" %}');"></div>
+  <main class="main">
+    {% block header_slider %}
+      <section class="top-slider">
+        <div class="container top-slider__container">
+          <div class="top-slider__inner">
+            <div class="top-slider__item">
+              <div class="top-slider__content">
+                <h3 class="top-slider__title">
+                  New Season <br />
+                  New Brand Collection
+                </h3>
+                <p class="top-slider__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do et dolore magna aliqua. Ipsum.</p>
+                <a class="top-slider__link" href="#">buy now</a>
+              </div>
+              <img class="top-slider__img" src="{% static 'deps/images/header-slide-2.png' %} " alt="" />
+            </div>
+            <div class="top-slider__item">
+              <div class="top-slider__content">
+                <h3 class="top-slider__title">
+                  New Season <br />
+                  New Brand Collection
+                </h3>
+                <p class="top-slider__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do et dolore magna aliqua. Ipsum.</p>
+                <a class="top-slider__link" href="#">buy now</a>
+              </div>
+              <img class="top-slider__img" src="{% static 'deps/images/header-slide-2.png' %} " alt="" />
+            </div>
+            <div class="top-slider__item">
+              <div class="top-slider__content">
+                <h3 class="top-slider__title">
+                  New Season <br />
+                  New Brand Collection
+                </h3>
+                <p class="top-slider__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do et dolore magna aliqua. Ipsum.</p>
+                <a class="top-slider__link" href="#">buy now</a>
+              </div>
+              <img class="top-slider__img" src="{% static 'deps/images/header-slide-3.png' %} " alt="" />
+            </div>
+          </div>
         </div>
-        <div class="swiper-pagination"></div>
+      </section>
+    {% endblock %}
+
+    {% block why_us %}
+    <div class="why">
+      <h3 class="why__title">Why Us?</h3>
+      <div class="why__items">
+        <div class="why__item">
+          <div class="whi__item-img">
+            <img src="{% static 'deps/icons/support-icon.png' %} " alt="" />
+        </div>
+          <h5 class="why__item-title">24/7 Support</h5>
+          <div class="why__item-text">
+            <p>
+              Excepteur sint occaecat cupidatat non proident,
+              sunt 
+            </p>
+            <p>
+
+              in culpa qui officia deserunt mollit 
+              anim id est
+            </p>
+            <p>
+              laborum.
+            </p>
+          </div>
+        </div>
+        <div class="why__item">
+          <div class="whi__item-img">
+            <img src="{% static 'deps/icons/truck-icon.png' %} " alt="" />
+        </div>
+          <h5 class="why__item-title">Free Shipping</h5>
+          <div class="why__item-text">
+            <p>
+              Excepteur sint occaecat cupidatat non proident,
+              sunt 
+            </p>
+            <p>
+
+              in culpa qui officia deserunt mollit 
+              anim id est
+            </p>
+            <p>
+              laborum.
+            </p>
+          </div>
+        </div>
+        <div class="why__item">
+          <div class="whi__item-img">
+            <img src="{% static 'deps/icons/piggy-bank-icon.png' %} " alt="" />
+        </div>
+          <h5 class="why__item-title">Refund Anytime</h5>
+          <div class="why__item-text">
+            <p>
+              Excepteur sint occaecat cupidatat non proident,
+              sunt 
+            </p>
+            <p>
+
+              in culpa qui officia deserunt mollit 
+              anim id est
+            </p>
+            <p>
+              laborum.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-{% endblock  %}
-</main>
+    {% endblock %}
+
+    {% block trending %}
+      <section class="new-collection">
+        <div class="container-fluid">
+          <h3 class="new-collection__title">Furniture new collection</h3>
+          <p class="new-collection__text">Deep v you probably haven't heard of them banh mi synth actually affogato. Aesthetic lyft ethical drinking vinegar austint</p>
+          <div class="collection">
+            <a class="collection__item" href="#">
+              <img class="collection__images" src="{% static 'deps/images/goods/bedside table.jpg' %} " alt="" />
+              <div class="collection__info">
+                <h6 class="collection__info-title">Truffaut literally trust</h6>
+                <p class="collection__info-text">Living room furntiture | Chair</p>
+              </div>
+            </a>
+            <a class="collection__item" href="#">
+              <img class="collection__images" src="{% static 'deps/images/goods/bedside table.jpg' %} " alt="" />
+              <div class="collection__info">
+                <h6 class="collection__info-title">Truffaut literally trust</h6>
+                <p class="collection__info-text">Living room furntiture | Chair</p>
+              </div>
+            </a>
+            <a class="collection__item" href="#">
+              <img class="collection__images" src="{% static 'deps/images/goods/bedside table.jpg' %} " alt="" />
+              <div class="collection__info">
+                <h6 class="collection__info-title">Truffaut literally trust</h6>
+                <p class="collection__info-text">Living room furntiture | Chair</p>
+              </div>
+            </a>
+            <a class="collection__item" href="#">
+              <img class="collection__images" src="{% static 'deps/images/goods/bedside table.jpg' %} " alt="" />
+              <div class="collection__info">
+                <h6 class="collection__info-title">Truffaut literally trust</h6>
+                <p class="collection__info-text">Living room furntiture | Chair</p>
+              </div>
+            </a>
+            <a class="collection__item" href="#">
+              <img class="collection__images" src="{% static 'deps/images/goods/bedside table.jpg' %} " alt="" />
+              <div class="collection__info">
+                <h6 class="collection__info-title">Truffaut literally trust</h6>
+                <p class="collection__info-text">Living room furntiture | Chair</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="container">
+          <blockquote class="blockquote">
+            <div class="blockquote__content">
+                <h4 class="blockquote__title">
+                    Very good Design. Flexible. Fast Support.
+                    <span>Steve John (customer)</span>
+                </h4>
+            </div>
+          </blockquote>
+        </div>
+      </section>
+    {% endblock %}
+
+    {% block gallery %}
+    <div class="gallery">
+      <div class="container-fluid">
+        <div class="gallery__buttons">
+          <h2 class="gallery__title">New Design</h2>
+          <button class="gallery__btn gallery__btn--active">Bedroom furniture</button>
+          <button class="gallery__btn">Living room furniture</button>
+          <button class="gallery__btn">Office furniture</button>
+          <button class="gallery__btn">Dining room futniture</button>
+          <button class="gallery__btn">Chair</button>
+        </div>
+        <div class="gallery__inner">
+          <div class="gallery__items gallery__items--active mix bedroom">
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+          </div>
+          <div class="gallery__items mix living">
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+          </div>
+          <div class="gallery__items mix office">
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+          </div>
+          <div class="gallery__items mix dining">
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+          </div>
+          <div class="gallery__items mix chair">
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+            <a class="gallery__item" href="#">
+              <img src="{% static "deps/images/goods/kitchen table.jpg" %} " alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock  %}
+  </main>
+</html>

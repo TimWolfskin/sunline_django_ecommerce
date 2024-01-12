@@ -1,4 +1,5 @@
 {% load static %}
+{% load goods_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,10 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Manrope:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="{% static "deps/css/style.css" %}">
+    <link rel="stylesheet" href="{% static "deps/css/fancybox.css" %}">
     <link rel="stylesheet" href="{% static "deps/css/slick.css" %}">
-    {% comment %} <link rel="stylesheet" href="{% static "deps/css/bootstrap/bootstrap.min.css" %} "> {% endcomment %}
+    <link rel="stylesheet" href="{% static "deps/css/bootstrap/bootstrap.min.css" %} ">
+    <link rel="stylesheet" href="{% static "deps/css/style.css" %}">
     {% comment %} <link rel="stylesheet" href="{% static "deps/css/my_css.css" %} "> {% endcomment %}
 </head>
 
@@ -35,6 +36,7 @@
                                 <li class="menu__list-item menu__list-item--dropdown">
                                     <a class="menu__list-link menu__list-link--dropdown" href="#">Products</a>
                                     <ul class="submenu">
+                                        {% tag_categories as categories %}
                                         {% for category in categories %}
                                         <li class="submenu__item"><a class="submenu__link" href=" {% url "catalog:index" %} "> {{category.name}} </a></li>                                        
                                         {% endfor %}
@@ -44,7 +46,7 @@
                                     <a class="menu__list-link" href="{% url "main:about" %}">About</a>
                                 </li>
                                 <li class="menu__list-item">
-                                    <a class="menu__list-link" href="#">Contacts</a>
+                                    <a class="menu__list-link" href=" {% url "main:contacts" %} ">Contacts</a>
                                 </li>
                             </ul>
                         </nav>
@@ -80,9 +82,19 @@
         <main class="main">
             {% block header_slider %}{% endblock  %}
 
+            {% block why_us %}{% endblock  %}
+
+            {% block trending %}{% endblock  %}
+
+            {% block gallery %}{% endblock  %}
+
             {% block catalog_content %}{% endblock  %}
 
             {% block product_content %}{% endblock  %}
+
+            {% block contacts_page %}{% endblock  %}
+
+            {% block about_page %}{% endblock  %}
         </main>
         <footer class="footer">
             <div class="footer__content">
@@ -153,8 +165,9 @@
     <script src="{% static "deps/js/jquery/slick.min.js" %}"></script>
     <script src="{% static "deps/js/jquery-events.js" %}"></script>
     <script src="{% static "deps/js/jquery-ajax.js" %}"></script>
+    <script src="{% static "deps/js/fancybox.umd.js" %}"></script>
+    <script src="{% static "deps/js/jquery.mixitup.min.js" %}"></script>  
     <script src="{% static "deps/js/bootstrap/bootstrap.bundle.min.js" %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="{% static "deps/js/main.js" %}"></script>
 </body>
 
