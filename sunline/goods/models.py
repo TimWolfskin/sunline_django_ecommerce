@@ -14,6 +14,8 @@ class Categories(models.Model):
 
 class Products(models.Model):
     name = models.CharField(max_length=150, unique=True)
+    color = models.CharField(max_length=50, blank=True, null=True)
+    type = models.CharField(max_length=50, blank=True, null=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True, null=True)
     description = models.TextField(max_length=200, unique=True, blank=True, null=True)
     image = models.ImageField(upload_to='goods_images', blank=True, null=True)
@@ -24,6 +26,7 @@ class Products(models.Model):
 
     class Meta:
         db_table = 'product'
+        ordering = ("id",)
     
     def __str__(self):
         return self.name

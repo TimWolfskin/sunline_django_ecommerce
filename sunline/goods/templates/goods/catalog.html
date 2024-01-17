@@ -1,91 +1,175 @@
-{% extends "main/base.html" %}
+{% extends 'main/base.html' %}
 {% load static %}
+{% load goods_tags %}
 
 {% block catalog_content %}
-<section class="shop">
+  <section class="shop">
     <div class="container">
-        <div class="shop__inner">
-            <div class="shop__filters filter">
-                <div class="filter__item">
-                    <form class="">
-                        <div class="">
-                            <input class="" type="checkbox" >
-                            <input class="">
-                            <label class="">
-                                Товары по акции
-                            </label>
-                        </div>
-                        <p class="">Сортировать:</p>
-                        <div class="">
-                            <input class="" type="radio">
-                            <label class=" ">
-                                По умолчанию
-                            </label>
-                        </div>
-                        <div class="">
-                            <input class="" type="radio">
-                            <label class="">
-                                От дешевых к дорогим
-                            </label>
-                        </div>
-                        <div class="">
-                            <input class="" type="radio" >
-                            <label class="">
-                                От дорогих к дешевым
-                            </label>
-                        </div>
-                        <button type="submit" class="">Применить</button>
-                    </form>
+      <div class="shop__inner">
+        <div class="shop__filters filter">
+          <div class="filter__item">
+            <form action=" {% url 'catalog:index' slug_url %} " method="get" class="" data-bs-theme="dark">
+              <div class="">
+                <input class="" type="checkbox" name="on_sale" id="flexCheckDefault" value="on" {% if request.GET.on_sale == 'on' %}checked{% endif %} />
+                {% comment %} <input type="hidden" name="q" value="request.GET.q" /> {% endcomment %}
+                <label class="" for="flexCheckDefault">Товары по акции</label>
+              </div>
+              <button type="submit" class="">Применить</button>
+            </form>
+          </div>
+          <div class="filter__item">
+            <div class="">
+              <form action="{% url 'catalog:index' slug_url %}" method="get" class="" data-bs-theme="dark">
+                <h5 class="">FILTER BY PRICE</h5>
+                <div class="">
+                  <input class="" type="radio" name="order_by" id="flexRadioDefault1" value="default" {% if not request.GET.order_by or request.GET.order_by == 'default' %}checked{% endif %} />
+                  <label class="" for="flexRadioDefault1">По умолчанию</label>
                 </div>
-            </div>
-            <div class="shop-content">
-                <div class="shop-content__inner">
-                    {% for product in goods %}
-                    <div class="product-item">
-                        <div class="product-item__img-box">
-                            {% if product.image %}
-                                <img class="product-item__images" src=" {{product.image.url}} " alt=" {{product.name}} ">
-                            {% else %}
-                                <img class="product-item__images" src="{% static "deps/images/Not found image.png" %} " alt="">
-                            {% endif %}
-                        </div>
-                        <div class="product-item__wrapper-box">
-                            <div class="product-item__box">
-                                <a href=" {% url "catalog:product" product.slug %} ">
-                                    <h4 class="product-item__title"> {{ product.name }} </h4>
-                                </a>
-                                <div class="product-item__price">
-                                    {% if product.discount %}
-                                        <div class="product-item__new-price">$ {{ product.sell_price }}</div>
-                                        <div class="product-item__old-price">$ {{product.price}} </div>
-                                    {% else %}
-                                    <div class="product-item__new-price">$ {{product.price}} </div>
-                                    {% endif %}
-                                    <div class="product_id">id: {{product.display_id}}</div>
-                                </div>
-                            </div>
-                            <div class="product-item__content-box">
-                                <p class="product-item__text">
-                                    {{ product.description }} 
-                                </p>
-                                <a href="#" class="btn add-to-cart">
-                                    Add to cart
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
+                <div class="">
+                  <input class="" type="radio" name="order_by" id="flexRadioDefault2" value="price" {% if request.GET.order_by == 'price' %}checked{% endif %} />
+                  <label class="" for="flexRadioDefault2">От дешевых к дорогим</label>
                 </div>
+                <div class="">
+                  <input class="" type="radio" name="order_by" id="flexRadioDefault3" value="-price" {% if request.GET.order_by == '-price' %}checked{% endif %}/>
+                  <label class="" for="flexRadioDefault3">От дорогих к дешевым</label>
+                </div>
+                <button type="submit" class="">Применить</button>
+              </form>
             </div>
+          </div>
+            <div class="filter__item">
+              <div class="">
+                <form action="{% url 'catalog:index' slug_url %}" method="get" class="" data-bs-theme="dark">
+                  <h5 class="">FILTER BY TYPE</h5>
+                  <div class="">
+                    <input class="" type="radio" name="on_type" id="RadioDefault1" value="default" {% if not request.GET.on_type or request.GET.on_type == 'default' %}checked{% endif %} />
+                    <label class="" for="flexRadioDefault1">По умолчанию</label>
+                  </div>
+                  <div class="">
+                    <input class="" type="radio" name="on_type" id="RadioDefault2" value="dining_Kitchen" {% if request.GET.on_type == 'dining_Kitchen' %}checked{% endif %} />
+                    <label class="" for="flexRadioDefault2">Dinning and Kitchen</label>
+                  </div>
+                  <div class="">
+                    <input class="" type="radio" name="on_type" id="RadioDefault3" value="table" {% if request.GET.on_type == 'table' %}checked{% endif %} />
+                    <label class="" for="flexRadioDefault3">Table</label>
+                  </div>
+                  <div class="">
+                    <input class="" type="radio" name="on_type" id="RadioDefault4" value="bed" {% if request.GET.on_type == 'bed' %}checked{% endif %} />
+                    <label class="" for="flexRadioDefault3">Bed</label>
+                  </div>
+                  <div class="">
+                    <input class="" type="radio" name="on_type" id="RadioDefault5" value="chair" {% if request.GET.on_type == 'chair' %}checked{% endif %} />
+                    <label class="" for="flexRadioDefault3">Chair</label>
+                  </div>
+                  <div class="">
+                    <input class="" type="radio" name="on_type" id="RadioDefault6" value="sofa" {% if request.GET.on_type == 'sofa' %}checked{% endif %} />
+                    <label class="" for="flexRadioDefault3">Sofa</label>
+                  </div>
+                  <div class="">
+                    <input class="" type="radio" name="on_type" id="RadioDefault7" value="closet" {% if request.GET.on_type == 'closet' %}checked{% endif %} />
+                    <label class="" for="flexRadioDefault3">Closet</label>
+                  </div>
+                  <div class="">
+                    <input class="" type="radio" name="on_type" id="RadioDefault8" value="other" {% if request.GET.on_type == 'other' %}checked{% endif %} />
+                    <label class="" for="flexRadioDefault3">Other</label>
+                  </div>
+
+                  
+                  <button type="submit" class="">Применить</button>
+                </form>
+              </div>
+          </div>
+
+          <div class="filter__item">
+            <div class="">
+              <form action="{% url 'catalog:index' slug_url %}" method="get" class="" data-bs-theme="dark">
+                <h5 class="">FILTER BY COLOR</h5>
+                <div class="">
+                  <input class="" type="radio" name="on_color" id="flexRadioDefault1" value="default" {% if not request.GET.on_color or request.GET.on_color == 'default' %}checked{% endif %} />
+                  <label class="" for="flexRadioDefault1">По умолчанию</label>
+                </div>
+                <div class="">
+                  <input class="" type="radio" name="on_color" id="flexRadioDefault2" value="grey" {% if request.GET.on_color == 'grey' %}checked{% endif %} />
+                  <label class="" for="flexRadioDefault2">Grey</label>
+                </div>
+                <div class="">
+                  <input class="" type="radio" name="on_color" id="flexRadioDefault3" value="brown" {% if request.GET.on_color == 'brown' %}checked{% endif %} />
+                  <label class="" for="flexRadioDefault3">Brown</label>
+                </div>
+                <div class="">
+                  <input class="" type="radio" name="on_color" id="flexRadioDefault3" value="black" {% if request.GET.on_color == 'black' %}checked{% endif %} />
+                  <label class="" for="flexRadioDefault3">Black</label>
+                </div>
+                <div class="">
+                  <input class="" type="radio" name="on_color" id="flexRadioDefault3" value="blue" {% if request.GET.on_color == 'blue' %}checked{% endif %} />
+                  <label class="" for="flexRadioDefault3">Blue</label>
+                </div>
+                <div class="">
+                  <input class="" type="radio" name="on_color" id="flexRadioDefault3" value="green" {% if request.GET.on_color == 'green' %}checked{% endif %} />
+                  <label class="" for="flexRadioDefault3">Green</label>
+                </div>
+                <button type="submit" class="">Применить</button>
+              </form>
+            </div>
+          </div>
+
         </div>
+        <div class="shop-content">
+          <div class="shop-content__inner">
+            {% for product in goods %}
+              <div class="product-item">
+                <div class="product-item__img-box">
+                  {% if product.image %}
+                    <img class="product-item__images" src=" {{ product.image.url }} " alt=" {{ product.name }} " />
+                  {% else %}
+                    <img class="product-item__images" src="{% static 'deps/images/Not found image.png' %} " alt="" />
+                  {% endif %}
+                </div>
+                <div class="product-item__wrapper-box">
+                  <div class="product-item__box">
+                    <a href=" {% url 'catalog:product' product.slug %} "><h4 class="product-item__title">{{ product.name }}</h4></a>
+                    <div class="product-item__price">
+                      {% if product.discount %}
+                        <div class="product-item__new-price">$ {{ product.sell_price }}</div>
+                        <div class="product-item__old-price">$ {{ product.price }}</div>
+                      {% else %}
+                        <div class="product-item__new-price">$ {{ product.price }}</div>
+                      {% endif %}
+                      <div class="product_id">id: {{ product.display_id }}</div>
+                      <div class=""> {{product.type}} </div>
+                    </div>
+                  </div>
+                  <div class="product-item__content-box">
+                    <p class="product-item__text">{{ product.description|truncatechars:65 }}</p>
+                    <a href="#" class="btn add-to-cart">Add to cart</a>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <a class="pagination__prev {% if not goods.has_previous %}pagination--disabled{% endif %} "
+          href=" {% if goods.has_previous %}?{%change_params page=goods.previous_page_number %} {% else %}
+            #
+          {% endif %}"> Previus
+        </a>
+        <ul class="pagination__list">
+          {% for page in goods.paginator.page_range %}
+            {% if page >= goods.number|add:-2 and page <= goods.number|add:2 %}
+              <li class="pagination__item">
+                <a class="pagination__link {% if goods.number == page %}pagination__link--active{% endif %} " href="?{%change_params page=page %}">{{ page }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <a class="pagination__next {% if not goods.has_next %}pagination--disabled{% endif %} "
+          href=" {% if goods.has_next %}?{%change_params page=goods.next_page_number %} {% else %}
+            #
+          {% endif %}"> Next
+        </a>
+      </div>
     </div>
-</section>
-{% endblock  %}
-
-
-
-
-
-
-
-
+  </section>
+{% endblock %}

@@ -38,7 +38,7 @@
                                     <ul class="submenu">
                                         {% tag_categories as categories %}
                                         {% for category in categories %}
-                                        <li class="submenu__item"><a class="submenu__link" href=" {% url "catalog:index" %} "> {{category.name}} </a></li>                                        
+                                        <li class="submenu__item"><a class="submenu__link" href=" {% url "catalog:index" category.slug %} "> {{category.name}} </a></li>                                        
                                         {% endfor %}
                                     </ul>
                                 </li>
