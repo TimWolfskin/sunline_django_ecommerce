@@ -8,10 +8,12 @@
       <div class="shop__inner">
         <div class="shop__filters filter">
           <div class="filter__item">
-            <form action=" {% url 'catalog:index' slug_url %} " method="get" class="" data-bs-theme="dark">
+            <form action="{% if request.GET.q %} {% url "catalog:search" %} {% else %} {% url 'catalog:index' slug_url %} {% endif %} " method="get" class="" data-bs-theme="dark">
               <div class="">
                 <input class="" type="checkbox" name="on_sale" id="flexCheckDefault" value="on" {% if request.GET.on_sale == 'on' %}checked{% endif %} />
-                {% comment %} <input type="hidden" name="q" value="request.GET.q" /> {% endcomment %}
+                {% if request.GET.q %}
+                <input type="hidden" name="q" value="{{ request.GET.q }}" /> 
+                {% endif %}
                 <label class="" for="flexCheckDefault">Товары по акции</label>
               </div>
               <button type="submit" class="">Применить</button>
