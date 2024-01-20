@@ -10,7 +10,7 @@
           <div class="filter__item">
             <form action="{% if request.GET.q %} {% url "catalog:search" %} {% else %} {% url 'catalog:index' slug_url %} {% endif %} " method="get" class="" data-bs-theme="dark">
               <div class="">
-                <input class="" type="checkbox" name="on_sale" id="flexCheckDefault" value="on" {% if request.GET.on_sale == 'on' %}checked{% endif %} />
+                <input class="" type="checkbox" name="on_sale" id="flexCheckDefault" value="on" {% if request.GET.on_sale == 'on' %}checked{% endif %}>
                 {% if request.GET.q %}
                 <input type="hidden" name="q" value="{{ request.GET.q }}" /> 
                 {% endif %}
@@ -118,6 +118,12 @@
         </div>
         <div class="shop-content">
           <div class="shop-content__inner">
+            {% if request.GET.q %}
+            <h3 class="">Search results for your query {{request.GET.q}} </h3>
+            {% if not goods %}
+            Nothing found
+            {% endif %}
+            {% endif %}
             {% for product in goods %}
               <div class="product-item">
                 <div class="product-item__img-box">
@@ -129,7 +135,16 @@
                 </div>
                 <div class="product-item__wrapper-box">
                   <div class="product-item__box">
-                    <a href=" {% url 'catalog:product' product.slug %} "><h4 class="product-item__title">{{ product.name }}</h4></a>
+                    <a href=" {% url 'catalog:product' product.slug %} "><h4 class="product-item__title"> 
+                      {% autoescape off %}
+                      {% if product.headline %}
+                       {{product.headline|truncatechars:100}}
+                        {% else %}
+                         {{ product.name|truncatechars:31 }}
+                          {% endif %}
+                      {% endautoescape %}
+                    </h4>
+                  </a>
                     <div class="product-item__price">
                       {% if product.discount %}
                         <div class="product-item__new-price">$ {{ product.sell_price }}</div>
@@ -142,7 +157,15 @@
                     </div>
                   </div>
                   <div class="product-item__content-box">
-                    <p class="product-item__text">{{ product.description|truncatechars:65 }}</p>
+                    <p class="product-item__text">
+                      {% autoescape off %}
+                      {% if product.bodyline %}
+                      {{product.bodyline|truncatechars:100}}
+                      {% else %}
+                      {{ product.description|truncatechars:65 }}
+                      {% endif %}
+                      {% endautoescape %}
+                    </p>
                     <a href="#" class="btn add-to-cart">Add to cart</a>
                   </div>
                 </div>
@@ -151,6 +174,7 @@
           </div>
         </div>
       </div>
+      {% if goods %}
       <div class="pagination">
         <a class="pagination__prev {% if not goods.has_previous %}pagination--disabled{% endif %} "
           href=" {% if goods.has_previous %}?{%change_params page=goods.previous_page_number %} {% else %}
@@ -172,6 +196,7 @@
           {% endif %}"> Next
         </a>
       </div>
+      {% endif %}
     </div>
   </section>
 {% endblock %}
