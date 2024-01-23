@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block block__content %}
+  <section class="top">
+    <div class="top__container" style="background-image: url('{% static 'deps/images/top_contacts.jpg' %} ');">
+      <div class="container">
+        <h2 class="top__title title">Contact us</h2>
+      </div>
+    </div>
+  </section>
+  <section class="map">
+    <div class="container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3059353029!2d-74.25986548248684!3d40.69714941932609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sru!4v1684954987986!5m2!1sen!2sru" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+  <section class="contact">
+    <div class="container">
+      <div class="contact__inner">
+        <div class="contact__info">
+          <h3 class="contact__info-title">Feel Free Don’t Hesitate To Contact With Us</h3>
+          <p class="contact__info-text">Lorem ipsum dolor sit amet, consectetur adingn elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo maecnaacnrao cumsan lacus vel facilisis.</p>
+          <ul class="contact__info-list">
+            <li class="contact__info-item">
+              <a class="contact__info-phone" href="">+0-123-456-7896</a>
+              <a class="contact__info-phone" href="">+0-123-456-7896</a>
+            </li>
+            <li class="contact__info-item contact__info-item--location">
+              Ranlon Market 789 Road, <br />
+              Market Street, Newyork
+            </li>
+            <li class="contact__info-item contact__info-item--email">
+              <div>yourmailaddress@gmail.com</div>
+              <div>yourmailaddress@gmail.com</div>
+            </li>
+          </ul>
+        </div>
+        <form action="" class="contact__form">
+          <p class="contact__form-title"></p>
+          <div class="contact__form-box">
+            <input class="contact__form-input" type="text" placeholder="Your Name" />
+            <input class="contact__form-input" type="text" placeholder="Your Email Address" />
+          </div>
+          <input class="contact__form-input" type="text" placeholder="subject" />
+          <textarea class="contact__form-textarea" placeholder="Message here"></textarea>
+          <button class="contact__form-btn" type="submit">send message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+{% endblock %}
