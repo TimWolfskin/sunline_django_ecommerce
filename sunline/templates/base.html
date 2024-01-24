@@ -66,11 +66,16 @@
                                         <img class="user-actions__img" src="{% static "deps/icons/user.svg" %}" alt="">
                                     </a>
                                     <ul class=" submenu">
+                                        {% if not user.is_authenticated %}
                                         <li class="submenu__item"><a class="submenu__link" href=" {% url "users:login" %} ">Login</a></li>
+                                        {% else %}
                                         <li class="submenu__item"><a class="submenu__link" href="#">Корзина</a></li>
                                         <li class="submenu__item"><a class="submenu__link" href=" {% url "users:profile" %} ">Личный кабинет</a></li>
+                                        {% if user.is_admin or user.is_staff %}
                                         <li class="submenu__item"><a class="submenu__link" href=" {% url "admin:index" %} ">Админ панель</a></li>
+                                        {% endif %}
                                         <li class="submenu__item"><a class="submenu__link" href=" {% url "users:logout" %} ">Logout</a></li>
+                                        {% endif %}
                                     </ul>
                                 </li>
                                 <li class="user-actions__item">
