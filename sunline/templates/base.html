@@ -8,155 +8,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Manrope:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Inter:wght@400;500;600;700;900&family=Manrope:wght@300;400;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="{% static "deps/css/fancybox.css" %}">
     <link rel="stylesheet" href="{% static "deps/css/slick.css" %}">
-    <link rel="stylesheet" href="{% static "deps/css/bootstrap/bootstrap.min.css" %} ">
+    {% comment %} <link rel="stylesheet" href="{% static "deps/css/bootstrap/bootstrap.min.css" %} "> {% endcomment %}
     <link rel="stylesheet" href="{% static "deps/css/style.css" %}">
     {% comment %} <link rel="stylesheet" href="{% static "deps/css/my_css.css" %} "> {% endcomment %}
 </head>
 
 <body>
-    <div class="wrapper">
-        <header class="header">
-            <header class="header">
-                <div class="container">
-                    <div class="header__inner">
-                        <a class="logo" href="#">
-                            <h1>Sunline</h1>
-                            <!-- <img src="images/logo.png" alt=""> -->
-                        </a>
-                        <nav class="menu">
-                            <ul class="menu__list">
-                                <li class="menu__list-item">
-                                    <a class="menu__list-link" href=" {% url "main:index" %}">Home</a>
-                                </li>
-                                <li class="menu__list-item menu__list-item--dropdown">
-                                    <a class="menu__list-link menu__list-link--dropdown" href="#">Products</a>
-                                    <ul class="submenu">
-                                        {% tag_categories as categories %}
-                                        {% for category in categories %}
-                                        <li class="submenu__item"><a class="submenu__link" href=" {% url "catalog:index" category.slug %} "> {{category.name}} </a></li>                                        
-                                        {% endfor %}
-                                    </ul>
-                                </li>
-                                <li class="menu__list-item">
-                                    <a class="menu__list-link" href="{% url "about:about" %}">About</a>
-                                </li>
-                                <li class="menu__list-item">
-                                    <a class="menu__list-link" href=" {% url "contacts:contacts" %} ">Contacts</a>
-                                </li>
-                                <li class="menu__list-item">
-                                    <a class="menu__list-link" href=" {% url "blog:blog" %} ">Blog</a>
-                                </li>
+
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <nav class="menu">
+                    <ul class="menu__list">
+                        <li class="menu__list-item">
+                            <a class="menu__list-link" href=" {% url "main:index" %}">Home</a>
+                        </li>
+                        <li class="menu__list-item menu__list-item--dropdown">
+                            <a class="menu__list-link menu__list-link--dropdown" href="#">Products</a>
+                            <ul class="submenu">
+                                {% tag_categories as categories %}
+                                {% for category in categories %}
+                                <li class="submenu__item"><a class="submenu__link" href=" {% url "catalog:index" category.slug %} "> {{category.name}} </a></li>                                        
+                                {% endfor %}
                             </ul>
-                        </nav>
-                        <div class="user-actions">
-                            <form class="form" role="search" action=" {% url "catalog:search" %} " method="get">
-                                <input class="form__input" role="search" type="search" placeholder="Search"  aria-label="Search" name="q" >
-                                <button class="form__input-btn"  type="submit">
-                                    <img src="{% static "deps/icons/search.svg" %} " alt="">
-                                </button>
-                            </form>
-                            <ul class="menu__list user-actions__list">
-                                <li class="menu__list-item user-actions__item">
-                                    <a class="user-actions__link " href="#">
-                                        <img class="user-actions__img" src="{% static "deps/icons/user.svg" %}" alt="">
-                                    </a>
-                                    <ul class=" submenu">
-                                        {% if not user.is_authenticated %}
-                                        <li class="submenu__item"><a class="submenu__link" href=" {% url "users:login" %} ">Login</a></li>
-                                        {% else %}
-                                        <li class="submenu__item"><a class="submenu__link" href="#">Корзина</a></li>
-                                        <li class="submenu__item"><a class="submenu__link" href=" {% url "users:profile" %} ">Личный кабинет</a></li>
-                                        {% if user.is_admin or user.is_staff %}
-                                        <li class="submenu__item"><a class="submenu__link" href=" {% url "admin:index" %} ">Админ панель</a></li>
-                                        {% endif %}
-                                        <li class="submenu__item"><a class="submenu__link" href=" {% url "users:logout" %} ">Logout</a></li>
-                                        {% endif %}
-                                    </ul>
-                                </li>
-                                <li class="user-actions__item">
-                                    <a class="user-actions__link" href="#">
-                                        <img class="user-actions__img" src="{% static "deps/icons/cart.svg" %}" alt="">
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-        </header>
-        <main class="main">
+                        </li>
+                        <li class="menu__list-item">
+                            <a class="menu__list-link" href=" {% url "blog:blog" %} ">Blog</a>
+                        </li>
+                        <li class="menu__list-item">
+                            <a class="menu__list-link" href="{% url "about:about" %}">About</a>
+                        </li>
+                        <li class="menu__list-item">
+                            <a class="menu__list-link" href=" {% url "contacts:contacts" %} ">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+                <a class="logo" href="#">
+                    <img src=" {% static 'deps/logo.svg' %} " alt="">
+                </a>
+                <nav class="menu">
+                    <ul class="menu__list">
+                        <li class="menu__list-item">
+                            <div class="user-actions">
+                                <form class="form" role="search" action=" {% url "catalog:search" %} " method="get">
+                                    <input class="form__input" role="search" type="search" placeholder="Search"  aria-label="Search" name="q" >
+                                    <button class="form__input-btn"  type="submit">
+                                        <img src="{% static "deps/icons/search.svg" %} " alt="">
+                                    </button>
+                                </form>
+                            </div>
+                        </li>
+                        <li class="menu__list-item">
+                            <a class="menu__list-link" href="">
+                                <img src=" {% static 'deps/icons/user.svg' %} " alt="">
+
+                            </a>
+                        </li>
+                        <li class="menu__list-item">
+                            <a class="menu__list-link" href="">
+                                <img src=" {% static 'deps/icons/heart.svg' %} " alt="">
+                                <span class="menu-list__num">3</span>
+                            </a>
+                        </li>
+                        <li class="menu__list-item">
+                            <a class="menu__list-link" href="">
+                                <img src=" {% static 'deps/icons/cart.svg' %} " alt="">
+                                <span class="menu-list__num">3</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
             {% include "includes/notification.html" %}
             {% block block__content %}{% endblock  %}
 
             
         </main>
         <footer class="footer">
-            <div class="footer__content">
-                <div class="container">
-                    <div class="footer__inner">
-                        <div class="footer__info">
-                            <h6 class="footer__info-title">
-                                Contact Us
-                            </h6>
-                            <p class="footer__info-text">
-                                Keffiyeh poutine etsy, paleo cray put a bird on it microdosing schlitz you probably
-                                occupy
-                            </p>
-                            <a class="info-email" href="mailto:ouremailaddress@email.com">
-                                ouremailaddress@email.com
-                            </a>
-                            <form class="footer__form">
-                                <input class="footer__form-input" type="email" placeholder="Subscribe by email">
-                                <button class="footer__form-button" type="submit">Send</button>
-                            </form>
-                        </div>
-                        <ul class="footer__social">
-                            <li class="footer__social-item">
-                                <a class="footer__social-link footer__social-link--facebook" href="#">Facebook</a>
-                            </li>
-                            <li class="footer__social-item">
-                                <a class="footer__social-link footer__social-link--instagram" href="#">Instagram</a>
-                            </li>
-                            <li class="footer__social-item">
-                                <a class="footer__social-link footer__social-link--pinterest" href="#">Pinterest</a>
-                            </li>
-                            <li class="footer__social-item">
-                                <a class="footer__social-link footer__social-link--whatsapp" href="#">WhatsApp</a>
-                            </li>
-                            <li class="footer__social-item">
-                                <a class="footer__social-link footer__social-link--youtube" href="#">Youtube</a>
-                            </li>
-                        </ul>
-                        <nav class="footer__menu">
-                            <ul class="footer__menu-list">
-                                <li class="footer__menu-item">
-                                    <a class="footer__menu-link" href="#">Delivery</a>
-                                </li>
-                                <li class="footer__menu-item">
-                                    <a class="footer__menu-link" href="#">FAQ</a>
-                                </li>
-                                <li class="footer__menu-item">
-                                    <a class="footer__menu-link" href="#">HELP</a>
-                                </li>
-                                <li class="footer__menu-item">
-                                    <a class="footer__menu-link" href="#">More About Us</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <div class="footer__copyright">
-                <div class="container">
-                    <p>
-                        674 Gonzales Drive. Washington, PA 15301
-                    </p>
-                </div>
-            </div>    
+ 
         </footer>
     </div>
     <script src="{% static "deps/js/jquery/jquery-3.7.0.min.js" %}"></script>

@@ -2,10 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from goods.models import Categories
+from main.models import BestSelling
 
 
 def index(request):
+    best_sellings = BestSelling.objects.all()
     context = {
+        'best_sellings': best_sellings,
         "title": "Sunline - main page",
         "content": "furniture ecommerce Sunline",
     }

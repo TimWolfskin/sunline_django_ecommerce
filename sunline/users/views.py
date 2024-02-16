@@ -15,7 +15,7 @@ def login(request):
         if form.is_valid():
             username = request.POST['username']
             password = request.POST['password']
-            user = auth.authenticate(username=username, password=password)
+            user: AbstractBaseUser | None = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
                 messages.success(request, f"{username}, you are logged in")

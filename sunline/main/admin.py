@@ -1,3 +1,6 @@
 from django.contrib import admin
+from main.models import BestSelling
 
-# Register your models here.
+@admin.register(BestSelling)
+class BestSellingAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
