@@ -310,4 +310,42 @@
       </div>
     </div>
   </section>
+
+  <section class="new-arrivals">
+    <div class="container">
+      <h3 class="new-arrivals__title">New Arrivals</h3>
+      <div class="new-arrivals__inner">
+        <div class="new-arrivals__items">
+          {% for new_arrival in new_arrivals %}
+
+          <div class="new-arrivals__item">
+            <div class="new-arrivals__item-image">
+              <a href="">
+                <img src=" {{new_arrival.image.url}} " alt="">
+              </a>
+            </div>
+            <div class="new-arrivals__item-label"></div>
+            <div class="new-arrivals__item-info">
+              <a class="new-arrivals__item-vendor" href="">
+                {{new_arrival.category}}
+              </a>
+              <a class="new-arrivals__item-name" href="">
+                {{new_arrival.name}}
+              </a>
+              <div class="new-arrivals__item-price_container">
+                <p class="new-arrivals__item-new__price">
+                  {{new_arrival.price}}
+                </p>
+                <p class="new-arrivals__item-old__price"></p>
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+
+
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}
