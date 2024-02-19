@@ -2,108 +2,312 @@
 {% load static %}
 {% load goods_tags %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <main class="main">
-    {% block block__content %}
-      <section class="top-slider">
-        <div class="top-slider__container">
-          <div class="top-slider__inner">
-            <div class="top-slider__item" style="background-image: url(' {% static 'deps/top-slider/slide1.webp' %} ');">
-              <div class="top-slider__content">
-                <h3 class="top-slider__title">
-                  Special Combo <br />
-                  For your Pets
-                </h3>
-                <div class="slider-sub-container">
-                  <h5 class="slider-sub-title">
-                    Just From
-                    <span>$99</span>
-                  </h5>
-                </div>
-                <div class="">
-                  <a class="top-slider__link top-slider__link--shop" href="#">Shop Now</a>
-                  <a class="top-slider__link top-slider__link--contact" href="#">Contact Us</a>
-                </div>
-              </div>
+{% block block__content %}
+  <section class="top-slider">
+    <div class="top-slider__container">
+      <div class="top-slider__inner">
+        <div class="top-slider__item" style="background-image: url(' {% static 'deps/top-slider/slide1.webp' %} ');">
+          <div class="top-slider__content">
+            <h3 class="top-slider__title">
+              Special Combo <br />
+              For your Pets
+            </h3>
+            <div class="slider-sub-container">
+              <h5 class="slider-sub-title">
+                Just From
+                <span>$99</span>
+              </h5>
             </div>
-            <div class="top-slider__item" style="background-image: url(' {% static 'deps/top-slider/slide2.webp' %} ');">
-              <div class="top-slider__content">
-                <h3 class="top-slider__title">
-                  Our In-Home Pet <br />
-                  Care Service
-                </h3>
-                <div class="">
-                  <h5 class="slider-sub-title">
-                    Just From
-                    <span>$99</span>
-                  </h5>
-                </div>
-                <div class="">
-                  <a class="top-slider__link top-slider__link--shop" href="#">Shop Now</a>
-                  <a class="top-slider__link top-slider__link--contact" href="#">Contact Us</a>
-                </div>
-              </div>
+            <div class="">
+              <a class="top-slider__link top-slider__link--shop" href="#">Shop Now</a>
+              <a class="top-slider__link top-slider__link--contact" href="#">Contact Us</a>
             </div>
           </div>
         </div>
-      </section>
+        <div class="top-slider__item" style="background-image: url(' {% static 'deps/top-slider/slide2.webp' %} ');">
+          <div class="top-slider__content">
+            <h3 class="top-slider__title">
+              Our In-Home Pet <br />
+              Care Service
+            </h3>
+            <div class="">
+              <h5 class="slider-sub-title">
+                Just From
+                <span>$99</span>
+              </h5>
+            </div>
+            <div class="">
+              <a class="top-slider__link top-slider__link--shop" href="#">Shop Now</a>
+              <a class="top-slider__link top-slider__link--contact" href="#">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <section class="categories">
-        <div class="container">
-          <h2 class="categories__title">Shop By Category</h2>
-          <div class="categories__items">
-            {% for category in categories %}
-              <div class="categories__item">
-                <a class="categories__item-image__link" href=""><img class="categories__item-image" src=" {{ category.image.url }} " alt="" /></a>
-                <a href="" class="categories__item-title">
-                  {{ category.name }}
-                  <span>
-                    {% if category.count > 0 %}
-                    {{ category.count }} items
-                    {% else %}
-                    0 items
-                    {% endif %}
-                  </span>
-                </a>
+  <section class="categories">
+    <div class="container">
+      <h2 class="categories__title">Shop By Category</h2>
+      <div class="categories__items">
+        {% for category in categories %}
+          <div class="categories__item">
+            <a class="categories__item-image__link" href=""><img class="categories__item-image" src=" {{ category.image.url }} " alt="" /></a>
+            <a href="" class="categories__item-title">
+              {{ category.name }}
+              <span>
+                {% if category.count > 0 %}
+                  {{ category.count }} items
+                {% else %}
+                  0 items
+                {% endif %}
+              </span>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <section class="selling">
+    <div class="container">
+      <h3 class="title">Best Selling</h3>
+      <div class="selling__products">
+        {% for best_selling in best_sellings %}
+          <div class="product">
+            <div class="product__image">
+              <a href="">
+                {% if best_selling.image %}
+                  <img src="{{ best_selling.image.url }}" alt="" />
+                {% endif %}
+                <div class="product__discount">30%</div>
+                <div class="product__active"></div>
+              </a>
+            </div>
+            <div class="product__info">
+              <h5 class="product__category"><a href="">{{ best_selling.category }}</a></h5>
+              <p class="product__title">{{ best_selling.name }}</p>
+              <div class="product__price__container">
+                <p class="product__new-price">$ {{ best_selling.price }}</p>
+                <p class="product__old-price">$ 44</p>
               </div>
-            {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <section class="banner">
+    <div class="container-fluid">
+      <div class="banner__items">
+        <div class="banner__item">
+          <div class="banner__item-image">
+            <a class="banner__item-image__link" href=" "><img class="" src=" {% static 'deps/images/index/banner/bn1.webp' %} " alt="" /></a>
+          </div>
+          <div class="banner__item-info">
+            <h4 class="banner__item-title">Organic food for Pets</h4>
+            <p class="banner__item-info"></p>
+            <a class="banner__item-link" href="">Shop Now</a>
           </div>
         </div>
-      </section>
-      <section class="selling">
-        <div class="container-fluid">
-          <h3 class="title">Best Selling</h3>
-          <div class="selling__products">
-            {% for best_selling in best_sellings %}
-            <div class="product">
-              <div class="product__image">
-                <a href="">
-                  {% if best_selling.image %}
-                  <img src="{{best_selling.image.url}}" alt="">
+
+        <div class="banner__item">
+          <div class="banner__item-image">
+            <a class="banner__item-image__link" href=" "><img class="" src=" {% static 'deps/images/index/banner/bn2.webp' %} " alt="" /></a>
+          </div>
+          <div class="banner__item-info">
+            <h4 class="banner__item-title">Organic food for Pets</h4>
+            <p class="banner__item-info"></p>
+            <a class="banner__item-link" href="">Shop Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="featured-products">
+    <div class="container">
+      <h2 class="featured-products__title">Featured Products</h2>
+      <div class="featured-products__inner">
+        <div class="tabs-container">
+          <div class="featured-products__tabs-container">
+            <ul class="featured-products__tabs-list" aria-labelledby="tabs-title">
+              <li class="featured-products__tabs-list__item">
+                <a class="featured-products__tabs-btn" id="tab-1" href="#all-products">All Products</a>
+              </li>
+              <li class="featured-products__tabs-list__item">
+                <a class="featured-products__tabs-btn" id="tab-2" href="#dogs-food">Dogs Food</a>
+              </li>
+              <li class="featured-products__tabs-list__item">
+                <a class="featured-products__tabs-btn" id="tab-3" href="#cats-food">Cats Food</a>
+              </li>
+              <li class="featured-products__tabs-list__item">
+                <a class="featured-products__tabs-btn" id="tab-4" href="#accessories">Accessories</a>
+              </li>
+              <li class="featured-products__tabs-list__item">
+                <a class="featured-products__tabs-btn" id="tab-5" href="#pets-toys">Pets Toys</a>
+              </li>
+              <li class="featured-products__tabs-list__item">
+                <a class="featured-products__tabs-btn" id="tab-6" href="#fish-food">Fish Food</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="featured-products__items">
+            <div class="tabs__panels flow">
+              <div class="tabs__panels-item" id="all-products" aria-labelledby="tab-1">
+                {% for featured_product in featured_products %}
+                  <div class="product" id="all-products" aria-labelledby="tab-1">
+                    <div class="product__image">
+                      <a href="">
+                        {% if best_selling.image %}
+                          <img src="{{ featured_product.image.url }}" alt="" />
+                        {% endif %}
+                        <div class="product__discount">30%</div>
+                        <div class="product__active"></div>
+                      </a>
+                    </div>
+                    <div class="product__info">
+                      <h5 class="product__category"><a href="">{{ featured_product.category }}</a></h5>
+                      <p class="product__title">{{ featured_product.name }}</p>
+                      <div class="product__price__container">
+                        <p class="product__new-price">$ {{ featured_product.price }}</p>
+                        <p class="product__old-price">$ 44</p>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+
+              <div id="dogs-food" aria-labelledby="tab-2">
+                {% for featured_product in featured_products %}
+                  {% if featured_product.group == 'accessories' %}
+                    <div class="product" id="dogs-food" aria-labelledby="tab-2">
+                      <div class="product__image">
+                        <a href="">
+                          {% if best_selling.image %}
+                            <img src="{{ featured_product.image.url }}" alt="" />
+                          {% endif %}
+                          <div class="product__discount">30%</div>
+                          <div class="product__active"></div>
+                        </a>
+                      </div>
+                      <div class="product__info">
+                        <h5 class="product__category"><a href="">{{ featured_product.category }}</a></h5>
+                        <p class="product__title">{{ featured_product.name }}</p>
+                        <div class="product__price__container">
+                          <p class="product__new-price">$ {{ featured_product.price }}</p>
+                          <p class="product__old-price">$ 44</p>
+                        </div>
+                      </div>
+                    </div>
                   {% endif %}
-                  <div class="product__discount">30%</div>
-                  <div class="product__active"></div>
-                </a>
+                {% endfor %}
               </div>
-              <div class="product__info">
-                <h5 class="product__category">
-                  <a href=""> {{best_selling.category}} </a>
-                </h5>
-                <p class="product__title">
-                  {{best_selling.name}}
-                </p>
-                <div class="product__price__container">
-                  <p class="product__new-price">$  {{best_selling.price}} </p>
-                  <p class="product__old-price"> $ 44</p>
-                </div>
+              <div id="cats-food" aria-labelledby="tab-3">
+                {% for featured_product in featured_products %}
+                  {% if featured_product.group == 'accessories' %}
+                    <div class="product" id="cats-food" aria-labelledby="tab-3">
+                      <div class="product__image">
+                        <a href="">
+                          {% if best_selling.image %}
+                            <img src="{{ featured_product.image.url }}" alt="" />
+                          {% endif %}
+                          <div class="product__discount">30%</div>
+                          <div class="product__active"></div>
+                        </a>
+                      </div>
+                      <div class="product__info">
+                        <h5 class="product__category"><a href="">{{ featured_product.category }}</a></h5>
+                        <p class="product__title">{{ featured_product.name }}</p>
+                        <div class="product__price__container">
+                          <p class="product__new-price">$ {{ featured_product.price }}</p>
+                          <p class="product__old-price">$ 44</p>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <div id="accessories" aria-labelledby="tab-4">
+                {% for featured_product in featured_products %}
+                  {% if featured_product.group == 'accessories' %}
+                    <div class="product" id="accessories" aria-labelledby="tab-4">
+                      <div class="product__image">
+                        <a href="">
+                          {% if best_selling.image %}
+                            <img src="{{ featured_product.image.url }}" alt="" />
+                          {% endif %}
+                          <div class="product__discount">30%</div>
+                          <div class="product__active"></div>
+                        </a>
+                      </div>
+                      <div class="product__info">
+                        <h5 class="product__category"><a href="">{{ featured_product.category }}</a></h5>
+                        <p class="product__title">{{ featured_product.name }}</p>
+                        <div class="product__price__container">
+                          <p class="product__new-price">$ {{ featured_product.price }}</p>
+                          <p class="product__old-price">$ 44</p>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              <div id="pets-toys" aria-labelledby="tab-5">
+                {% for featured_product in featured_products %}
+                  {% if featured_product.group == 'pets_toys' %}
+                    <div class="product" id="pets-toys" aria-labelledby="tab-5">
+                      <div class="product__image">
+                        <a href="">
+                          {% if best_selling.image %}
+                            <img src="{{ featured_product.image.url }}" alt="" />
+                          {% endif %}
+                          <div class="product__discount">30%</div>
+                          <div class="product__active"></div>
+                        </a>
+                      </div>
+                      <div class="product__info">
+                        <h5 class="product__category"><a href="">{{ featured_product.category }}</a></h5>
+                        <p class="product__title">{{ featured_product.name }}</p>
+                        <div class="product__price__container">
+                          <p class="product__new-price">$ {{ featured_product.price }}</p>
+                          <p class="product__old-price">$ 44</p>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              <div id="fish-food" aria-labelledby="tab-6">
+                {% for featured_product in featured_products %}
+                  {% if featured_product.group == 'fish_food' %}
+                    <div class="product" id="fish-food" aria-labelledby="tab-4">
+                      <div class="product__image">
+                        <a href="">
+                          {% if best_selling.image %}
+                            <img src="{{ featured_product.image.url }}" alt="" />
+                          {% endif %}
+                          <div class="product__discount">30%</div>
+                          <div class="product__active"></div>
+                        </a>
+                      </div>
+                      <div class="product__info">
+                        <h5 class="product__category"><a href="">{{ featured_product.category }}</a></h5>
+                        <p class="product__title">{{ featured_product.name }}</p>
+                        <div class="product__price__container">
+                          <p class="product__new-price">$ {{ featured_product.price }}</p>
+                          <p class="product__old-price">$ 44</p>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
               </div>
             </div>
-            {% endfor %}
-
           </div>
         </div>
-      </section>
-    {% endblock %}
-  </main>
-</html>
+      </div>
+    </div>
+  </section>
+{% endblock %}
