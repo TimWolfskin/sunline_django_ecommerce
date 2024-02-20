@@ -813,6 +813,110 @@ a {
 
 .new-arrivals__item-old__price {}
 
+.contact-banner {
+  margin: 88px 0 34px;
+}
+
+.contact-banner__inner {
+  background-image: url('../images/bg-contact-banner.webp');
+  width: 100%;
+  background-position: 0px 0px;
+  background-repeat: repeat-x;
+  animation: animatedBackground 18s linear infinite alternate;
+  border-radius: 3px;
+}
+
+.contact-banner__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: hidden;
+  padding: 50px 13px;
+}
+
+.contact-banner__phone,
+.contact-banner__email {
+  flex: 46%;
+  text-align: center;
+  color: #fff;
+  margin-top: 3px;
+  font-family: Bubblegum Sans, cursive;
+}
+
+.contact-banner__phone-title,
+.contact-banner__email-title {
+  font-size: 32px;
+  line-height: 45px;
+}
+
+.contact-banner__phone-value,
+.contact-banner__email-value {
+  font-size: 32px;
+  line-height: 45px;
+  color: #fff;
+  transition: all .3s;
+}
+
+.contact-banner__phone-value:hover,
+.contact-banner__email-value:hover {
+  color: #dc3545;
+}
+
+.contact-banner__center {}
+
+.contact-banner__center-image {
+  transition: .5s;
+}
+
+
+.choose {
+  margin: 88px 0 34px;
+}
+
+.choose__inner {
+  background-image: url('../images/bg-choose.webp');
+  background-position: center;
+  background-size: cover;
+}
+
+.choose__content {}
+
+.choose__title {
+  padding-top: 15px;
+  font-family: Bubblegum Sans,cursive;
+  font-size: 40px;
+  line-height: 46px;
+  color: #fff;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.choose__items {
+  color: #fff;
+}
+
+.choose__item {
+  margin: 0;
+  position: relative;
+  padding-left: 62px;
+  padding-bottom: 25px;
+  max-width: 610px;
+}
+
+.choose__item-title {
+  font-size: 22px;
+  line-height: 26px;
+  font-family: Bubblegum Sans,cursive;
+  margin-bottom: 10px;
+}
+
+.choose__item-descr {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+}
+
 
 /* ==============страница с каталогом================ */
 
