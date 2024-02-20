@@ -104,7 +104,87 @@
         {% block block__content %}{% endblock  %}
     </main>
         <footer class="footer">
- 
+            <div class="container">
+                <div class="footer-top">
+                    <div class="footer-top__items">
+                        <div class="footer__contact">
+                            <h5 class="footer__contact-title">Contact Us</h5>
+                            <p class="footer__contact-address">
+                                Address: 139 Brook Drive South 
+                                Richmond Hill, New York 1067 USA
+                            </p>
+                            <div class="footer__contact-email">
+                                <p class="footer__contact-email__name">Email:</p>
+                                    <a class="footer__contact-email__link" href="">
+                                        bzopets@support.com
+                                    </a>
+                            </div>
+                            <div class="footer__contact-call">
+                                <img class="footer__contact-call__image" src=" {% static 'deps/icons/phone.png' %} " alt="">
+                                <div class="footer__contact-call__info">
+                                    <p class="footer__contact-call__title">Call To Order</p>
+                                    <a class="footer__contact-call__phone" href="">
+                                        (+084) 859 481 3614
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-top__links">
+                            <h5 class="footer__links-title">Quick Links</h5>
+                            <ul class="footer__links-list">
+                                <li class="footer__links-item">
+                                    <a href="" class="footer__links-item-link"> About us</a>
+                                </li>
+                                <li class="footer__links-item">
+                                    <a href="" class="footer__links-item-link">Contact us</a>
+                                </li>
+                                <li class="footer__links-item">
+                                    <a href="" class="footer__links-item-link">Shop</a>
+                                </li>
+                                <li class="footer__links-item">
+                                    <a href="" class="footer__links-item-link">Products</a>
+                                </li>
+                                <li class="footer__links-item">
+                                    <a href="" class="footer__links-item-link">Blogs</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer-top__links">
+                            <h5 class="footer__links-title">Userful Links</h5>
+                            <ul class="footer__links-list">
+                                <li class="footer__links-item">
+                                    <a href="" class="footer__links-item-link">Special Offers</a>
+                                </li>
+                                <li class="footer__links-item">
+                                    <a href="" class="footer__links-item-link">Privacy Policy</a>
+                                </li>
+                                <li class="footer__links-item">
+                                    <a href="" class="footer__links-item-link">Teams of Use</a>
+                                </li>
+                                <li class="footer__links-item">
+                                    <a href="" class="footer__links-item-link">Portfolio</a>
+                                </li>
+                                <li class="footer__links-item">
+                                    <a href="" class="footer__links-item-link">FAQs</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer-newsletter">
+                            <h4 class="footer-newsletter__title">Our Newsletter</h4>
+                            <p class="footer-newsletter__text">
+                                Subscribe to the weekly newsletter 
+                                for all the latest updates & get a 10% off bill offers.
+                            </p>
+                            <div class="footer-form__container">
+                                <form action="" class="form">
+                                    <input class="footer-form__input" placeholder="Your Email" type="text">
+                                    <button class="footer-form__btn">Subscribe</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
     <script src="{% static "deps/js/jquery.mixitup.min.js" %}"></script>  
