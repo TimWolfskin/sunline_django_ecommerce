@@ -3,6 +3,27 @@
 {% load goods_tags %}
 
 {% block block__content %}
+<section class="top">
+  <div class="top__container" style="background-image: url(' {% static 'deps/images/bg-breadcrumbs.webp' %} ');">
+      <div class="container">
+          <h2 class="top__title title">Shop page</h2>
+          <div class="breadcrumbs">
+              <ul class="breadcrumbs__list">
+                  <li class="breadcrumbs__item">
+                      <a class="breadcrumbs__link" href="#">
+                          Home
+                      </a>
+                  </li>
+                  <li class="breadcrumbs__item">
+                      <a class="breadcrumbs__link" href="#">
+                          Shop page
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</section>
   <section class="shop">
     <div class="container">
       <div class="shop__inner">
@@ -14,38 +35,38 @@
                 {% if request.GET.q %}
                 <input type="hidden" name="q" value="{{ request.GET.q }}" /> 
                 {% endif %}
-                <label class="" for="flexCheckDefault">Товары по акции</label>
+                <label class="" for="flexCheckDefault">Products on sale</label>
               </div>
-              <button type="submit" class="">Применить</button>
+              <button class="filter-btn" type="submit" class="">Apply</button>
             </form>
           </div>
           <div class="filter__item">
             <div class="">
               <form action="{% url 'catalog:index' slug_url %}" method="get" class="" data-bs-theme="dark">
-                <h5 class="">FILTER BY PRICE</h5>
+                <h5 class="filter__item-title">FILTER BY PRICE</h5>
                 <div class="">
                   <input class="" type="radio" name="order_by" id="flexRadioDefault1" value="default" {% if not request.GET.order_by or request.GET.order_by == 'default' %}checked{% endif %} />
-                  <label class="" for="flexRadioDefault1">По умолчанию</label>
+                  <label class="" for="flexRadioDefault1">Default</label>
                 </div>
                 <div class="">
                   <input class="" type="radio" name="order_by" id="flexRadioDefault2" value="price" {% if request.GET.order_by == 'price' %}checked{% endif %} />
-                  <label class="" for="flexRadioDefault2">От дешевых к дорогим</label>
+                  <label class="" for="flexRadioDefault2">From cheap to expensive</label>
                 </div>
                 <div class="">
                   <input class="" type="radio" name="order_by" id="flexRadioDefault3" value="-price" {% if request.GET.order_by == '-price' %}checked{% endif %}/>
-                  <label class="" for="flexRadioDefault3">От дорогих к дешевым</label>
+                  <label class="" for="flexRadioDefault3">From expensive to cheap</label>
                 </div>
-                <button type="submit" class="">Применить</button>
+                <button class="filter-btn" type="submit" class="">Apply</button>
               </form>
             </div>
           </div>
             <div class="filter__item">
               <div class="">
                 <form action="{% url 'catalog:index' slug_url %}" method="get" class="" data-bs-theme="dark">
-                  <h5 class="">FILTER BY TYPE</h5>
+                  <h5 class="filter__item-title">FILTER BY TYPE</h5>
                   <div class="">
                     <input class="" type="radio" name="on_type" id="RadioDefault1" value="default" {% if not request.GET.on_type or request.GET.on_type == 'default' %}checked{% endif %} />
-                    <label class="" for="flexRadioDefault1">По умолчанию</label>
+                    <label class="" for="flexRadioDefault1">Default</label>
                   </div>
                   <div class="">
                     <input class="" type="radio" name="on_type" id="RadioDefault2" value="dining_Kitchen" {% if request.GET.on_type == 'dining_Kitchen' %}checked{% endif %} />
@@ -77,43 +98,12 @@
                   </div>
 
                   
-                  <button type="submit" class="">Применить</button>
+                  <button class="filter-btn" type="submit" class="">Apply</button>
                 </form>
               </div>
           </div>
 
-          <div class="filter__item">
-            <div class="">
-              <form action="{% url 'catalog:index' slug_url %}" method="get" class="" data-bs-theme="dark">
-                <h5 class="">FILTER BY COLOR</h5>
-                <div class="">
-                  <input class="" type="radio" name="on_color" id="flexRadioDefault1" value="default" {% if not request.GET.on_color or request.GET.on_color == 'default' %}checked{% endif %} />
-                  <label class="" for="flexRadioDefault1">По умолчанию</label>
-                </div>
-                <div class="">
-                  <input class="" type="radio" name="on_color" id="flexRadioDefault2" value="grey" {% if request.GET.on_color == 'grey' %}checked{% endif %} />
-                  <label class="" for="flexRadioDefault2">Grey</label>
-                </div>
-                <div class="">
-                  <input class="" type="radio" name="on_color" id="flexRadioDefault3" value="brown" {% if request.GET.on_color == 'brown' %}checked{% endif %} />
-                  <label class="" for="flexRadioDefault3">Brown</label>
-                </div>
-                <div class="">
-                  <input class="" type="radio" name="on_color" id="flexRadioDefault3" value="black" {% if request.GET.on_color == 'black' %}checked{% endif %} />
-                  <label class="" for="flexRadioDefault3">Black</label>
-                </div>
-                <div class="">
-                  <input class="" type="radio" name="on_color" id="flexRadioDefault3" value="blue" {% if request.GET.on_color == 'blue' %}checked{% endif %} />
-                  <label class="" for="flexRadioDefault3">Blue</label>
-                </div>
-                <div class="">
-                  <input class="" type="radio" name="on_color" id="flexRadioDefault3" value="green" {% if request.GET.on_color == 'green' %}checked{% endif %} />
-                  <label class="" for="flexRadioDefault3">Green</label>
-                </div>
-                <button type="submit" class="">Применить</button>
-              </form>
-            </div>
-          </div>
+
 
         </div>
         <div class="shop-content">
@@ -125,8 +115,8 @@
             {% endif %}
             {% endif %}
             {% for product in goods %}
-              <div class="product-item">
-                <div class="product-item__img-box">
+              <div class="product">
+                <div class="product__image">
                   {% if product.image %}
                     <img class="product-item__images" src=" {{ product.image.url }} " alt=" {{ product.name }} " />
                   {% else %}
@@ -135,7 +125,9 @@
                 </div>
                 <div class="product-item__wrapper-box">
                   <div class="product-item__box">
-                    <a href=" {% url 'catalog:product' product.slug %} "><h4 class="product-item__title"> 
+                    <h5 class="product__category"><a href="">{{ product.category }}</a></h5>
+                    <div style="display: none;" class=""> {{product.type}} </div>
+                    <a href=" {% url 'catalog:product' product.slug %} "><h4 class="product__title"> 
                       {% autoescape off %}
                       {% if product.headline %}
                        {{product.headline|truncatechars:100}}
@@ -145,19 +137,18 @@
                       {% endautoescape %}
                     </h4>
                   </a>
-                    <div class="product-item__price">
+                    <div class="product__price__container">
                       {% if product.discount %}
-                        <div class="product-item__new-price">$ {{ product.sell_price }}</div>
+                        <div class="product__new-price">$ {{ product.sell_price }}</div>
                         <div class="product-item__old-price">$ {{ product.price }}</div>
                       {% else %}
-                        <div class="product-item__new-price">$ {{ product.price }}</div>
+                        <div class="product__new-price">$ {{ product.price }}</div>
                       {% endif %}
                       <div class="product_id">id: {{ product.display_id }}</div>
-                      <div class=""> {{product.type}} </div>
                     </div>
                   </div>
                   <div class="product-item__content-box">
-                    <p class="product-item__text">
+                    {% comment %} <p class="product-item__text">
                       {% autoescape off %}
                       {% if product.bodyline %}
                       {{product.bodyline|truncatechars:100}}
@@ -165,7 +156,7 @@
                       {{ product.description|truncatechars:65 }}
                       {% endif %}
                       {% endautoescape %}
-                    </p>
+                    </p> {% endcomment %}
                     <a href="#" class="btn add-to-cart">Add to cart</a>
                   </div>
                 </div>
