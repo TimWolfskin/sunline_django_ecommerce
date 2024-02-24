@@ -1668,10 +1668,11 @@ body {
 }
 
 .top__title {
+  font-family: Bubblegum Sans, cursive;
   text-align: center;
   font-size: 48px;
   line-height: 65px;
-  color: #29282d;
+  color: #2d3054;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
@@ -1697,9 +1698,10 @@ body {
 }
 
 .contact__info-title {
+  font-family: Bubblegum Sans, cursive;
   font-size: 48px;
   line-height: 58px;
-  color: #29282d;
+  color: #2d3054;
   margin-bottom: 20px;
 }
 
@@ -1760,18 +1762,33 @@ body {
 .contact__form {
   width: 100%;
   padding: 60px 40px;
-  box-shadow: 0px 5px 20px 0px rgba(146, 146, 146, 0.3);
+  background-color: #2d3054;
+  box-shadow: 0px 5px 20px 0px #2d3054;
 }
 
 .contact__form-title {
-  font-size: 22px;
-  margin-bottom: 20px;
-  color: #29282d;
+  font-family: Bubblegum Sans, cursive;
+  font-size: 35px;
+  line-height: 39px;
+  color: #fff;
+  margin-bottom: 10px;
 }
 
 .contact__form-box {
   display: flex;
-  justify-content: space-between;
+  gap: 30px;
+  /* justify-content: space-between; */
+}
+
+.contact__form-input__name,
+.contact__form-input__email,
+.contact__form-input__phone {
+  padding: 13px 18px;
+  display: block;
+  height: 60px;
+  background-color: #f6f6f6;
+  border: none;
+  margin-bottom: 30px;
 }
 
 .contact__form-input {
@@ -1799,7 +1816,7 @@ body {
   padding: 12px 26px;
   text-transform: uppercase;
   color: #fff;
-  background-color: #ff6f00;
+  background-color: #F94073;
   cursor: pointer;
   border: none;
 }

@@ -8,4 +8,5 @@ app_name = 'contacts'
 
 urlpatterns = [
     path('contacts/', views.contacts, name='contacts'),
+    path('success/', views.contacts, name='success'),
 ]

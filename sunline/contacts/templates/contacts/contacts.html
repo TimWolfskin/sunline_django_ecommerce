@@ -3,7 +3,7 @@
 
 {% block block__content %}
   <section class="top">
-    <div class="top__container" style="background-image: url('{% static 'deps/images/top_contacts.jpg' %} ');">
+    <div class="top__container" style="background-image: url('{% static 'deps/images/bg-breadcrumbs.webp' %} ');">
       <div class="container">
         <h2 class="top__title title">Contact us</h2>
       </div>
@@ -18,8 +18,8 @@
     <div class="container">
       <div class="contact__inner">
         <div class="contact__info">
-          <h3 class="contact__info-title">Feel Free Don’t Hesitate To Contact With Us</h3>
-          <p class="contact__info-text">Lorem ipsum dolor sit amet, consectetur adingn elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo maecnaacnrao cumsan lacus vel facilisis.</p>
+          <h3 class="contact__info-title">Get In Touch</h3>
+          <p class="contact__info-text">Parking is only available on weekends. Feel free to buzz 101 at the intercom!</p>
           <ul class="contact__info-list">
             <li class="contact__info-item">
               <a class="contact__info-phone" href="">+0-123-456-7896</a>
@@ -35,15 +35,17 @@
             </li>
           </ul>
         </div>
-        <form action="" class="contact__form">
-          <p class="contact__form-title"></p>
+        <form class="contact__form" id="contact-form-ajax" method="post">
+          {% csrf_token %}
+          <p class="contact__form-title">Have An Question? Contact Us!</p>
           <div class="contact__form-box">
-            <input class="contact__form-input" type="text" placeholder="Your Name" />
-            <input class="contact__form-input" type="text" placeholder="Your Email Address" />
+            <input id="full_name" name="name" class="contact__form-input__name" type="text" placeholder="Your Name" required />
+            <input id="email" name="email" class="contact__form-input__email" type="email" placeholder="Your Email Address" required />
+            <input id="phone" name="telephone" class="contact__form-input__phone" type="tel" placeholder="Your phone number" />
           </div>
-          <input class="contact__form-input" type="text" placeholder="subject" />
-          <textarea class="contact__form-textarea" placeholder="Message here"></textarea>
-          <button class="contact__form-btn" type="submit">send message</button>
+          <input id="subject" name="subject" class="contact__form-input" type="text" placeholder="subject" />
+          <textarea id="message" name="message" class="contact__form-textarea" placeholder="Message here" required></textarea>
+          <button class=" submit contact__form-btn" type="submit">send message</button>
         </form>
       </div>
     </div>
