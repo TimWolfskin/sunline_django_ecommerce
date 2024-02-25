@@ -13,6 +13,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="{% static "deps/css/fancybox.css" %}">
     <link rel="stylesheet" href="{% static "deps/css/slick.css" %}">
+    <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
     {% comment %} <link rel="stylesheet" href="{% static "deps/css/bootstrap/bootstrap.min.css" %} "> {% endcomment %}
     <link rel="stylesheet" href="{% static "deps/css/style.css" %}">
     {% comment %} <link rel="stylesheet" href="{% static "deps/css/my_css.css" %} "> {% endcomment %}
@@ -40,7 +41,7 @@
                             </ul>
                         </li>
                         <li class="menu__list-item">
-                            <a class="menu__list-link" href=" {% url "blog:blog" %} ">Blog</a>
+                            <a class="menu__list-link" href="{% url "blog:blog" %} ">Blog</a> 
                         </li>
                         <li class="menu__list-item">
                             <a class="menu__list-link" href="{% url "about:about" %}">About</a>
