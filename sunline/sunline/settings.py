@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     "debug_toolbar",
     "mptt",
+    "ckeditor",
 
     "main",
     "goods",
@@ -157,3 +158,6 @@ INTERNAL_IPS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = 'users.User'
 LOGIN_URL = '/user/login/'
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+

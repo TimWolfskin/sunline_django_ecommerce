@@ -469,4 +469,32 @@
       </div>
     </div>
   </section>
+  <section class="blog">
+    <div class="container">
+      <h2 class="blog__title">Our Blog</h2>
+      <div class="blog__inner">
+        <div class="blog__items">
+          {% for post in posts %}
+          <div class="blog__item">
+            <div class="blog__image">
+              <img src=" {{post.image.url}} " alt="" />
+            </div>
+            <div class="blog__item-content">
+              <div class="blog__item-info">
+                <div class="blog__item-author">By: {{post.author}} </div>
+                <div class="blog__item-category"> {{post.category}} </div>
+                <div class="blog__item-date">
+                  <p> {{post.create_at|date:"d"}} </p>
+                  <p> {{post.create_at|date:"M"}} </p>
+                </div>
+              </div>
+              <h3 class="blog__item-title"> {{post.title}} </h3>
+              <a class="blog__item-btn" href=" {% url 'blog:post-detail' post.slug %} ">Read More</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}

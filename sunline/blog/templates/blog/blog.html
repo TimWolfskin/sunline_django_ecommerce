@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load blog_tags %}
 
 {% block block__content %}
   <section class="top">
@@ -30,42 +31,31 @@
               <img src=" {{post.image.url}} " alt="" />
             </div>
             <div class="blog-page__item-content">
-              <div class="blog-page__item-category"> {{post.category}} </div>
+              <div class="blog-page__item-category"> {{post_list.first.category.name}} </div>
               <h3 class="blog-page__item-title"> {{post.title}} </h3>
               <div class="blog-page__item-author"> {{post.author}} </div>
-              <p class="blog-page__item-text"> {{post.text}} </p>
-              <a class="blog-page__item-btn" href="">Read More</a>
+              <div class="">
+                <p> {{post.create_at|date:"d"}} </p>
+                <p> {{post.create_at|date:"M"}} </p>
+              </div>
+              <p class="blog-page__item-text"> {{post.text|truncatechars:200}} </p>
+              <a class="blog-page__item-btn" href=" {% url 'blog:post-detail' post.slug %} ">Read More</a>
             </div>
           </div>
-          {% endfor %}
 
 
-          <div class="blog-page__item">
-            <div class="blog-page__image">
-              <img src=" {% static 'deps/images/blog.webp' %} " alt="" />
-            </div>
-            <div class="blog-page__item-content">
-              <div class="blog-page__item-date">April 2023</div>
-              <h3 class="blog-page__item-title">How To Encourage An Active Lifestyle For Your Pets</h3>
-              <p class="blog-page__item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. consectetur adipisicing elit.</p>
-              <a class="blog-page__item-btn" href="">Read More</a>
-            </div>
-          </div>
+
         </div>
         <div class="blog-page__aside">
-          <div class="filter-search filter__item">
-            <h3 class="filter__title">Search</h3>
-            <form class="filter-search__form" action="#">
-              <input class="filter-search__input" type="text" placeholder="Search your keyword...." />
-              <button class="filter-search__btn" type="submit"><img src="images/icons/search.svg" alt="" /></button>
-            </form>
-          </div>
+
 
           <div class="person">
-            <img class="person__img" src="images/content/blog/blog-person-avatar.png" alt="" />
-            <div class="person__name">Tom D. Maionay</div>
-            <div class="person__position">CEO Founder</div>
-            <p class="person__text">Lorem ipsum dolor sit amet, consectetum adipiscing eit, sed do eiusmod temporary incididunt ut labore et dolore magnaamo aliqua. Qus ipsum suspendisse ultrices an gravida. Risus</p>
+            <img class="person__img" src=" {{post.author.image.url}} " alt="" />
+            <div class="person__name"> {{post.author.name}} </div>
+            <div class="person__position"> {{post.author.surname}} </div>
+            <p class="person__text">
+              {{post.author.bio}}
+            </p>
             <div class="person__social">
               <a class="person__social-link" href="#">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,112 +75,30 @@
             </div>
           </div>
 
-          <div class="latest-post">
-            <h3 class="latest-post__title">Latest Post</h3>
-            <div class="latest-post__item">
-              <a class="latest-post__img-link" href="#"><img class="latest-post__img" src="images/content/blog/blog-latest-post-img-1.png" alt="" /></a>
-              <div class="latest-post__box">
-                <a class="latest-post__title-link" href="#"><h5 class="latest-post__box-title">Lorem ipsum dolor suitabl amet, adiping elit.</h5></a>
-                <div class="latest-post__date">16 Feb, 2019</div>
-              </div>
-            </div>
-            <div class="latest-post__item">
-              <a class="latest-post__img-link" href="#"><img class="latest-post__img" src="images/content/blog/blog-latest-post-img-1.png" alt="" /></a>
-              <div class="latest-post__box">
-                <a class="latest-post__title-link" href="#"><h5 class="latest-post__box-title">Lorem ipsum dolor suitabl amet, adiping elit.</h5></a>
-                <div class="latest-post__date">16 Feb, 2019</div>
-              </div>
-            </div>
-            <div class="latest-post__item">
-              <a class="latest-post__img-link" href="#"><img class="latest-post__img" src="images/content/blog/blog-latest-post-img-1.png" alt="" /></a>
-              <div class="latest-post__box">
-                <a class="latest-post__title-link" href="#"><h5 class="latest-post__box-title">Lorem ipsum dolor suitabl amet, adiping elit.</h5></a>
-                <div class="latest-post__date">16 Feb, 2019</div>
-              </div>
-            </div>
-            <div class="latest-post__item">
-              <a class="latest-post__img-link" href="#"><img class="latest-post__img" src="images/content/blog/blog-latest-post-img-1.png" alt="" /></a>
-              <div class="latest-post__box">
-                <a class="latest-post__title-link" href="#"><h5 class="latest-post__box-title">Lorem ipsum dolor suitabl amet, adiping elit.</h5></a>
-                <div class="latest-post__date">16 Feb, 2019</div>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
 
           <div class="filter__item filter-category">
             <h3 class="filter__title">Category</h3>
             <form class="filter-category__form" action="#">
-              <label class="filter-category__label">
-                <input class="filter-category__input" type="checkbox" />
-                <div class="filter-category__checkbox">
-                  <span>Woman</span>
-                  <span>48</span>
-                </div>
-              </label>
-              <label class="filter-category__label">
-                <input class="filter-category__input" type="checkbox" />
-                <div class="filter-category__checkbox">
-                  <span>Male</span>
-                  <span>48</span>
-                </div>
-              </label>
-              <label class="filter-category__label">
-                <input class="filter-category__input" type="checkbox" checked />
-                <div class="filter-category__checkbox">
-                  <span>Sale product</span>
-                  <span>92</span>
-                </div>
-              </label>
-              <label class="filter-category__label">
-                <input class="filter-category__input" type="checkbox" />
-                <div class="filter-category__checkbox">
-                  <span>Fashion</span>
-                  <span>121</span>
-                </div>
-              </label>
-              <label class="filter-category__label">
-                <input class="filter-category__input" type="checkbox" />
-                <div class="filter-category__checkbox">
-                  <span>Hot dresses</span>
-                  <span>98</span>
-                </div>
-              </label>
-              <label class="filter-category__label">
-                <input class="filter-category__input" type="checkbox" />
-                <div class="filter-category__checkbox">
-                  <span>Accessories</span>
-                  <span>88</span>
-                </div>
-              </label>
+              {% tag_categories as categories %}
+              {% for category in categories %}
+              <li class="submenu__item">
+                <a class="submenu__link" href=" {% url "catalog:index" category.slug %} "> {{category.name}} </a>
+            </li>    
+              {% endfor %}
             </form>
           </div>
           <div class="filter__item filter-popular">
             <h3 class="filter__title">Popular Tags</h3>
             <form class="filter-popular__form" action="#">
+
+              {% for tag in tags %}
               <label class="filter-popular__label">
                 <input class="filter-popular__input" type="checkbox" />
-                <span class="filter-popular__checkbox">Sweetshirt</span>
+                <span class="filter-popular__checkbox"> {{tag.name}} </span>
               </label>
-              <label class="filter-popular__label">
-                <input class="filter-popular__input" type="checkbox" />
-                <span class="filter-popular__checkbox">Man Accessories</span>
-              </label>
-              <label class="filter-popular__label">
-                <input class="filter-popular__input" type="checkbox" />
-                <span class="filter-popular__checkbox">Fashion</span>
-              </label>
-              <label class="filter-popular__label">
-                <input class="filter-popular__input" type="checkbox" />
-                <span class="filter-popular__checkbox">Polo</span>
-              </label>
-              <label class="filter-popular__label">
-                <input class="filter-popular__input" type="checkbox" />
-                <span class="filter-popular__checkbox">T-shirt</span>
-              </label>
-              <label class="filter-popular__label">
-                <input class="filter-popular__input" type="checkbox" />
-                <span class="filter-popular__checkbox">Jewellery</span>
-              </label>
+              {% endfor %}
+
             </form>
           </div>
         </div>
