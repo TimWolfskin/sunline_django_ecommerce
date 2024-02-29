@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 # from sunline import settings
 from django.conf import settings
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
@@ -14,6 +15,7 @@ urlpatterns = [
     path("about/", include("about.urls", namespace="about")),
     path("contacts/", include("contacts.urls", namespace="contacts")),
     path("blog/", include("blog.urls", namespace="blog")),
+    path('cart/', include('cart.urls', namespace='cart')),
 ]
 
 if settings.DEBUG:

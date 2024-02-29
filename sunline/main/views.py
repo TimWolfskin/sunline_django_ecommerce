@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
-from goods.models import Categories
+
 from main.models import BestSelling, FeaturedProducts, NewArrivals
 from blog.models import Post
 
@@ -24,14 +23,5 @@ def index(request):
 
 
 
-def about(request):
-    context = {
-        "title": "Sunline - about",
-        "content": "About",
-        "text_on_page": "why this store is so awesome and needfull",
-    }
-    return render(request, "main/about.html", context)
 
 
-def contacts(request):
-    return render(request, "main/contacts.html")
