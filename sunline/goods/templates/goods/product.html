@@ -65,7 +65,9 @@
                 <div class="single-product__description">
                     {{product.description}}
                 </div>
-                <button class="single-product-btn" type="submit">Add to Cart</button>
+                <a class="single-product-btn" href="{% url 'cart:cart_add' product.slug %} ">
+                    Add to Cart
+                </a>
             </div>
         </div>
 
