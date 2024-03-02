@@ -31,7 +31,7 @@
                     </div>
                     <div class="col p-0"><strong> {{cart.products_price}} $</strong></div>
                     <div class="col p-0">
-                        <a href=" {% url 'cart:cart_remove' 1 %} ">
+                        <a href=" {% url 'cart:cart_remove' cart.id %} ">
                             <img src=" {% static 'deps/icons/trash.svg' %} " alt="">
                         </a>
                     </div>
