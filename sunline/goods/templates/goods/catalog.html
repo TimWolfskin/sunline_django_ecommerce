@@ -157,7 +157,13 @@
                       {% endif %}
                       {% endautoescape %}
                     </p> {% endcomment %}
-                    <a href=" {% url 'cart:cart_add' product.slug %} " class="btn add-to-cart">Add to cart</a>
+                    <a href=" {% url 'cart:cart_add'%} "
+                     class="btn add-to-cart"
+                     data-product-id=" {{product.id}} "
+                     >
+                     {% csrf_token %}
+                     <img src=" {% static 'deps/icons/add-to-cart.svg' %} " alt="">
+                    </a>
                   </div>
                 </div>
               </div>

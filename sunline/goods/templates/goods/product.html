@@ -65,15 +65,17 @@
                 <div class="single-product__description">
                     {{product.description}}
                 </div>
-                <a class="single-product-btn" href="{% url 'cart:cart_add' product.slug %} ">
-                    Add to Cart
+                <a class="single-product-btn btn add-to-cart" href="{% url 'cart:cart_add' %}"
+                data-product-id=" {{product.id}} "
+                >
+                {% csrf_token %}
+                <img src=" {% static 'deps/icons/add-to-cart.svg' %} " alt="">
                 </a>
             </div>
         </div>
 
-        <!--
-tutorial: https://youtu.be/fI9VM5zzpu8
--->
+        
+        
 
 <div class="single-product-tabs">
 
