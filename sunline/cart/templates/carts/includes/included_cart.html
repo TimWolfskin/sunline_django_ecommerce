@@ -1,56 +1,99 @@
 {% load static %}
 {% load carts_tags %}
 
-{% user_carts request as carts  %}
 
+
+
+{% user_carts request as carts  %}
 <section class="cart">
-    <div class="card mb-3 text-bg-light shadow-lg">
         {% for cart in carts %}
-        <div class="card-header">
-            <h5 class="card-title"> {{cart.product.name}} </h5>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
                 <div class="row text-center">
-                    <div class="col p-0">
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-dark btn-sm decrement"
-                                    data-cart-id=" {{cart.id}} " data-cart-change-url=" {% url 'cart:cart_change' %} ">
-                                    {% csrf_token %}
-                                    -</button>
-                            </span>
-                            <input type="text" class="form-control number" value=" {{cart.quantity}} "
-                                readonly>
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-dark btn-sm increment"
-                                    data-cart-id=" {{cart.id}} " data-cart-change-url=" {% url 'cart:cart_change' %} ">
-                                    {% csrf_token %}
-                                    +</button>
-                            </span>
+                        <div class="cart__items">
+
+
+                            <div class="cart__item">
+                                <h5 class="cart__item-name">
+                                    Product
+                                </h5>
+                                <h5 class="cart__product-name card-title"> {{cart.product.name}} </h5>
+                            </div>
+
+                            
+                <div class="cart__item">
+                        <h5 class="cart__item-name">
+                            Price
+                        </h5>
+                                
+                    <div class="cart__item-price">
+                        <p>${{cart.product.sell_price}}</p>
+                    </div>
+
+                </div>
+
+                            <div class="cart__item">
+                                <h5 class="cart__item-name">
+                                    Quantity
+                                </h5>
+                                <div class="input-group">
+                                    <div class="">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="cart__quantity-btn btn btn-dark btn-sm decrement"
+                                                data-cart-id="{{ cart.id }}"
+                                                data-cart-change-url="{% url "cart:cart_change" %}">
+                                                {% csrf_token %}
+                                                -</button>
+                                        </span>
+                                    </div>
+                                    <div class="">
+                                        <input type="text" class="form-control number cart__quantity-control" value="{{ cart.quantity }}"
+                                        readonly>
+                                    </div>
+                                        <div class="">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="cart__quantity-btn btn btn-dark btn-sm increment"
+                                                    data-cart-id="{{ cart.id }}"
+                                                    data-cart-change-url="{% url "cart:cart_change" %}">
+                                                    {% csrf_token %}
+                                                   +</button>
+                                            </span>
+                                        </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="cart__item">
+                                <h5 class="cart__item-name">
+                                    Total
+                                </h5>
+                                <div class="cart__item-total">
+                                    <div class="card-footer">
+                                        {% comment %} <p class="float-left">Total <strong> {{carts.total_quantity}} </strong> item(s) worth</p> {% endcomment %}
+                                        <p class="cart__item-total__price">$ {{carts.total_price}}</p>
+                                    </div>
+
+                                    <div class="col p-0">
+                                        <a class="remove-from-cart" href=" {% url 'cart:cart_remove' %} "
+                                        data-cart-id=" {{cart.id}} "
+                                        >
+                                        {% csrf_token %}
+
+
+                                            <?xml version="1.0" encoding="utf-8"?>
+                                            <svg width="21px" height="21px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 3L21 21M18 6L17.6 12M17.2498 17.2527L17.1991 18.0129C17.129 19.065 17.0939 19.5911 16.8667 19.99C16.6666 20.3412 16.3648 20.6235 16.0011 20.7998C15.588 21 15.0607 21 14.0062 21H9.99377C8.93927 21 8.41202 21 7.99889 20.7998C7.63517 20.6235 7.33339 20.3412 7.13332 19.99C6.90607 19.5911 6.871 19.065 6.80086 18.0129L6 6H4M16 6L15.4559 4.36754C15.1837 3.55086 14.4194 3 13.5585 3H10.4416C9.94243 3 9.47576 3.18519 9.11865 3.5M11.6133 6H20M14 14V17M10 10V17" stroke="#F94073" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+
+
+
+
+                                        </a>
+                                    </div>
+                            </div>
+
+
                         </div>
                     </div>
-                    <div class="col p-0">
-                        <p>x {{cart.product.sell_price}} = </p>
-                    </div>
-                    <div class="col p-0"><strong> {{cart.products_price}} $</strong></div>
-                    <div class="col p-0">
-                        <a class="remove-from-cart" href=" {% url 'cart:cart_remove' %} "
-                        data-cart-id=" {{cart.id}} "
-                        >
-                        {% csrf_token %}
-                            <img src=" {% static 'deps/icons/trash.svg' %} " alt="">
-                        </a>
-                    </div>
-                </div>
-            </li>
-        </ul>
+
         {% endfor %}
-    </div>
-    <div class="card mb-3 shadow-lg">
-        <div class="card-footer">
-            <p class="float-left">Total <strong> {{carts.total_quantity}} </strong> item(s) worth</p>
-            <h4 class="float-left"><strong> {{carts.total_price}} $</strong></h4>
-        </div>
-    </div>
 </section>

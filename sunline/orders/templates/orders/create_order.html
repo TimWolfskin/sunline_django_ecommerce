@@ -4,10 +4,10 @@
 
 
 {% block block__content %}
-<div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
-    <div class="container">
+<div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow orders">
+    <div class="orders__products-selected">
         <h3 class="text-center mb-4">Selected Products</h3>
-        <div class="container" id="cart-items-container">
+        <div class=" orders__cart-items" id="cart-items-container">
             <!-- Разметка корзины -->
             {% user_carts request as carts %}
 

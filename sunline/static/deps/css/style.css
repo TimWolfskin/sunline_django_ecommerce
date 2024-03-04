@@ -781,6 +781,10 @@ body {
   width: calc(75% - 15px);
 }
 
+.featured-products__items {
+  display: flex;
+}
+
 .featured-products__tabs-btn {
   border: none;
   background-color: inherit;
@@ -2433,7 +2437,7 @@ body {
 .profile__form-input {
   background-color: #fff;
   border: 1px solid;
-  color: #666666;
+  color: #2d3054;
   border-radius: 22px;
   padding: 13px 18px;
   margin-bottom: 30px;
@@ -2468,6 +2472,9 @@ body {
   line-height: 24px;
 }
 
+.cart {
+  padding: 120px 0 60px;
+}
 
 
 .cart__title {
@@ -2477,6 +2484,97 @@ body {
   padding: 25px 0 10px;
 }
 
+.cart__items {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.cart__item-name {
+  font-size: 22px;
+  line-height: 26px;
+  color: #2d3054;
+  font-weight: 600;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  transition: .6s;
+  margin-bottom: 20px;
+}
+
+.remove-from-cart {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+
+.cart__product-name {
+  font-size: 16px;
+  line-height: 18px;
+  color: #2d3054;
+  font-weight: 400;
+  max-width: 300px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #2d3054;
+  border-radius: 90px;
+}
+
+.cart__quantity-btn {
+  width: 2.5rem;
+  flex-shrink: 0;
+  font-size: 1.8rem;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2d3054;
+}
+
+.cart__quantity-control {
+  max-width: 36px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-bottom: none;
+  border-top: none;
+  border-right: 1px solid #ededed;
+  border-left: 1px solid #ededed;
+}
+
+.cart__item-total {
+  display: flex;
+}
+
+.cart__item-price {
+  font-size: 18px;
+  color: #2d3054;
+  font-weight: 500;
+}
+
+.cart__item-total__price {
+  color: #F94073;
+  font-size: 24px;
+  line-height: 26px;
+  font-weight: 500;
+}
+
+.cart__checkout-btn {
+  background: #F94073;
+  color: #fff;
+  text-transform: capitalize;
+  box-shadow: inset 0 0 #ffffff1a;
+  transition: .4s;
+  padding: 10px 40px;
+  font-size: 13px;
+  letter-spacing: unset;
+  font-weight: 500;
+  border-radius: 90px;
+  float: right;
+}
 
 
 .orders__title {
@@ -2492,6 +2590,14 @@ body {
 }
 
 
+
+.orders {
+
+}
+
+.orders__cart-items {
+  display: block;
+}
 
 
 
