@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from cart.models import Cart
+from wishlist.models import Wishlist
 from django.db.models import Prefetch
 from orders.models import Order, OrderItem
 
@@ -29,6 +30,9 @@ def login(request):
 
                 if session_key:
                     Cart.objects.filter(session_key=session_key).update(user=user)
+
+                if session_key:
+                    Wishlist.objects.filter(session_key=session_key).update(user=user)
 
                 if request.POST.get('next', None):
                     return HttpResponseRedirect(request.POST.get('next'))
@@ -57,6 +61,9 @@ def registration(request):
 
             if session_key:
                 Cart.objects.filter(session_key=session_key).update(user=user)
+
+            if session_key:
+                Wishlist.objects.filter(session_key=session_key).update(user=user)
 
 
             messages.success(request, f"{user.username}, You have successfully registered and logged into your account")
@@ -98,6 +105,9 @@ def profile(request):
 
 def users_cart(request):
     return render(request, 'users/users_cart.html')
+
+def users_wishlist(request):
+    return render(request, 'users/users_wishlist.html')
 
 
 

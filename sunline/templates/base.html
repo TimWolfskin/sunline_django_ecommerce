@@ -90,10 +90,12 @@
                     </li>
                 </ul>
                     <li class="menu__list-item">
-                        <a class="menu__list-link" href="">
+
+                        <a class="menu__list-link" href="{% url 'user:users_wishlist' %}">
                             <img src=" {% static 'deps/icons/heart.svg' %} " alt="">
-                            <span class="menu-list__num">3</span>
+                            <span class="menu-list__num">{{wishlists.total_quantity}}</span>
                         </a>
+
                     </li>
                     <li class="menu__list-item">
                         <a class="menu__list-link" href=" {% url 'user:users_cart' %} ">

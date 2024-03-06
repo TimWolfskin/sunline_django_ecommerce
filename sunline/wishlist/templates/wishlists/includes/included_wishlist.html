@@ -1,0 +1,19 @@
+{% load static %}
+{% load wishlists_tags %}
+
+
+
+{% user_wishlists request as wishlists %}
+<section class="wishlist">
+  {% for wishlist in wishlists %}
+
+    <div class="">
+      <h5 class="card-title">{{ wishlist.product.name }}</h5>
+    </div>
+
+    <div class="">
+        <p>${{wishlist.product.sell_price}}</p>
+    </div>
+
+  {% endfor %}
+</section>
