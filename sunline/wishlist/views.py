@@ -1,8 +1,9 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from django.http import JsonResponse
+from django.shortcuts import redirect, render
+from django.template.loader import render_to_string
 from goods.models import Products
 from wishlist.models import Wishlist
-from django.template.loader import render_to_string
 from wishlist.utils import get_user_wishlists
 
 
@@ -38,7 +39,7 @@ def wishlist_add(request):
     
     user_wishlist = get_user_wishlists(request)
     wishlist_items_html = render_to_string(
-        "wishlists/includes/included_wishlist.html", {"wishlists": user_wishlist}, request=request)
+        "wishlist/includes/included_wishlist.html", {"wishlists": user_wishlist}, request=request)
 
     response_data = {
         "message": "Product added to wishlist",
@@ -50,16 +51,41 @@ def wishlist_add(request):
 
 
 
-def remove_wishlist(request):
+def wishlist_change(request):
+    wishlist_id = request.POST.get("wishlist_id")
+    quantity = request.POST.get("quantity")
+
+    wishlist = Wishlist.objects.get(id=wishlist_id)
+
+    wishlist.quantity = quantity
+    wishlist.save()
+    updated_quantity = wishlist.quantity
+
+    wishlist = get_user_wishlists(request)
+    wishlist_items_html = render_to_string(
+        "wishlists/includes/included_wishlist.html", {"wishlists": wishlist}, request=request)
+
+    response_data = {
+        "message": "Quantity changed",
+        "wishlist_items_html": wishlist_items_html,
+        "quaantity": updated_quantity,
+    }
+
+    return JsonResponse(response_data)
+
+
+
+
+def wishlist_remove(request):
     wishlist_id = request.POST.get("wishlist_id")
 
     wishlist = Wishlist.objects.get(id=wishlist_id)
     quantity = wishlist.quantity
     wishlist.delete()
 
-    user_wishlist = get_user_wishlists(request)
+    user_wishlists = get_user_wishlists(request)
     wishlist_items_html = render_to_string(
-        "wishlists/includes/included_wishlist.html", {"wishlists": user_wishlist}, request=request)
+        "wishlists/includes/included_wishlist.html", {"wishlists": user_wishlists}, request=request)
 
     response_data = {
         "message": "Product removed",

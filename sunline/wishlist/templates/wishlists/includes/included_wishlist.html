@@ -7,6 +7,10 @@
 <section class="wishlist">
   {% for wishlist in wishlists %}
 
+  <div class="">
+    <img src="{{wishlist.product.image.url}}" alt="">
+  </div>
+
     <div class="">
       <h5 class="card-title">{{ wishlist.product.name }}</h5>
     </div>
@@ -15,5 +19,17 @@
         <p>${{wishlist.product.sell_price}}</p>
     </div>
 
+    <div class="">
+      <p>quantity in stock: {{wishlist.product.quantity}}</p>
+  </div>
+  
+  <div class="">
+    <a class="single-product-btn btn add-to-cart" href="{% url 'cart:cart_add' %}"
+    data-product-id=" {{wishlist.product.id}} "
+    >
+    {% csrf_token %}
+    <img src=" {% static 'deps/icons/add-to-cart.svg' %} " alt="">
+    </a>
+  </div>
   {% endfor %}
 </section>
