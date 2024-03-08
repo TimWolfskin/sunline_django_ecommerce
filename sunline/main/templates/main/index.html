@@ -50,21 +50,21 @@
     <div class="container">
       <h2 class="categories__title">Shop By Category</h2>
       <div class="categories__items">
+        {% tag_categories as categories %}
         {% for category in categories %}
-          <div class="categories__item">
-            <a class="categories__item-image__link" href=""><img class="categories__item-image" src=" {{ category.image.url }} " alt="" /></a>
-            <a href="" class="categories__item-title">
-              {{ category.name }}
-              <span>
-                {% if category.count > 0 %}
-                  {{ category.count }} items
-                {% else %}
-                  0 items
-                {% endif %}
-              </span>
-            </a>
-          </div>
-        {% endfor %}
+        <div class="categories__item">
+          <a class="categories__item-image__link" href="{% url "catalog:index" category.slug %}"><img class="categories__item-image" src=" {{ category.image.url }} " alt="" /></a>
+          <a href="{% url "catalog:index" category.slug %}" class="categories__item-title">
+            {{ category.name }}
+            <span>
+
+                {{ product.count }} items
+
+            </span>
+          </a>
+        </div>
+      {% endfor %}
+
       </div>
     </div>
   </section>
@@ -72,27 +72,52 @@
     <div class="container">
       <h3 class="title">Best Selling</h3>
       <div class="selling__products">
+
+
         {% for best_selling in best_sellings %}
-          <div class="product">
-            <div class="product__image">
-              <a href="">
-                {% if best_selling.image %}
-                  <img src="{{ best_selling.image.url }}" alt="" />
-                {% endif %}
-                <div class="product__discount">30%</div>
-                <div class="product__active"></div>
-              </a>
-            </div>
-            <div class="product__info">
-              <h5 class="product__category"><a href="">{{ best_selling.category }}</a></h5>
-              <p class="product__title">{{ best_selling.name }}</p>
-              <div class="product__price__container">
-                <p class="product__new-price">$ {{ best_selling.price }}</p>
-                <p class="product__old-price">$ 44</p>
-              </div>
-            </div>
+        <div class="product">
+          <div class="product__image">
+            <a href="{% url  'main:best_selling' best_selling.slug %}  ">
+              {% if best_selling.image %}
+                <img src="{{ best_selling.image.url }}" alt="" />
+              {% endif %}
+              <div class="product__discount">30%</div>
+              <div class="product__active"></div>
+            </a>
           </div>
-        {% endfor %}
+          <div class="product__info">
+            <h5 class="product__category"><a href="">{{ best_selling.category }}</a></h5>
+            <a href="{% url  'main:best_selling' best_selling.slug %} " class="product__title">{{ best_selling.name }}</a>
+            <div class="product__price__container">
+              <p class="product__new-price">$ {{ best_selling.price }}</p>
+              <p class="product__old-price">$ 44</p>
+            </div>
+            <div class="product__btns-container">
+
+              <a class="product__cart-btn btn add-to-cart" href="{% url 'cart:cart_add' %}"
+              data-product-id=" {{best_selling.id}} "
+              >
+              {% csrf_token %}
+              Buy Now
+              </a>
+
+              
+              <a class="product__wishlist-btn btn add-to-wishlist" href="{% url 'wishlist:wishlist_add' %}"
+              data-product-id=" {{best_selling.id}} "
+              >
+              {% csrf_token %}
+              <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+              <svg width="28px" height="28px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.7 4C18.87 4 21 6.98 21 9.76C21 15.39 12.16 20 12 20C11.84 20 3 15.39 3 9.76C3 6.98 5.13 4 8.3 4C10.12 4 11.31 4.91 12 5.71C12.69 4.91 13.88 4 15.7 4Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              </a>
+
+          </div>
+          </div>
+        </div>
+      {% endfor %}
+
+
       </div>
     </div>
   </section>

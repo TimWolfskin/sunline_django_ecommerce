@@ -79,7 +79,7 @@ def product(request, product_slug):
         "reviews": reviews,
         # "average_rating": average_rating,
         # "product_image": product_image,
-        # "produts": products
+        # "products": products
     }
 
 

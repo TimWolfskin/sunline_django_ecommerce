@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+    <link rel="stylesheet" href="{% static "deps/css/bootstrap/bootstrap.min.css" %} ">
+
+{% block block__content %}
+
+<section class="top">
+    <div class="top__container" style="background-image: url('./images/top-bg.png');">
+        <div class="container">
+            <h2 class="top__title title">Best Product</h2>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="single-product">
+    <div class="container">
+        <div class="single-product__inner">
+
+            <div class="product-one__slide product-slide">
+                <div class="product-slide__thumb">
+                    <div class="product-slide__thumb-item">
+                        <img src=" {{best_selling.image.url}} " alt="">
+                    </div>
+                    <div class="product-slide__thumb-item">
+                        <img src=" {{best_selling.image.url}} " alt="">
+                    </div>
+                    <div class="product-slide__thumb-item">
+                        <img src=" {{best_selling.image.url}} " alt="">
+                    </div>
+                    <div class="product-slide__thumb-item">
+                        <img src=" {{best_selling.image.url}} " alt="">
+                    </div>
+                </div>
+                <div class="product-slide__big">
+                    <div class="product-slide__big-item">
+                        <img src=" {{best_selling.image.url}} " alt="">
+                    </div>
+                    {% comment %} <div class="product-slide__big-item">
+                        <img src=" {{product.image.url}} " alt="">
+                    </div>
+                    <div class="product-slide__big-item">
+                        <img src=" {{product.image.url}} " alt="">
+                    </div>
+                    <div class="product-slide__big-item">
+                        <img src=" {{product.image.url}} " alt="">
+                    </div> {% endcomment %}
+                </div>
+            </div>
+
+            <div class="single-product__content">
+                <h3 class="single-product__title"> {{best_selling.name}} </h3>
+                <div class="single-product__price-box">
+                    <span class="single-product__price">$ {{best_selling.price}} </span>
+                </div>
+                <div class="single-product__info">
+                    <div class="product-info__text">
+                       Product id: {{best_selling.id}}
+                    </div>
+                    <div class="product-info__text">
+                       Category: {{best_selling.category}}
+                     </div>
+                </div>
+                <div class="single-product__description">
+                    {{best_selling.description}}
+                </div>
+                <div class="product__btns-container">
+
+                    <a class="product__cart-btn btn add-to-cart" href="{% url 'cart:cart_add' %}"
+                    data-product-id=" {{best_selling.id}} "
+                    >
+                    {% csrf_token %}
+                    Buy Now
+                    </a>
+
+                    
+                    <a class="product__wishlist-btn btn add-to-wishlist" href="{% url 'wishlist:wishlist_add' %}"
+                    data-product-id=" {{best_selling.id}} "
+                    >
+                    {% csrf_token %}
+                    <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                    <svg width="28px" height="28px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.7 4C18.87 4 21 6.98 21 9.76C21 15.39 12.16 20 12 20C11.84 20 3 15.39 3 9.76C3 6.98 5.13 4 8.3 4C10.12 4 11.31 4.91 12 5.71C12.69 4.91 13.88 4 15.7 4Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        
+        
+
+<div class="single-product-tabs">
+
+    <div class="tabs-container single__product-tabs__container">
+      <ul class="single-product__tabs-buttons" aria-labelledby="tabs-title">
+        <li class="single-product__tabs-btn">
+            <a class="single-product-btn__link"  id="tab-1" href="#advertising"> Product Description </a>
+        </li>
+        <li class="single-product__tabs-btn">
+            <a class="single-product-btn__link" id="tab-2" href="#social-media"> Shipping & Returns </a>
+        </li>
+        <li class="single-product__tabs-btn">
+            <a class="single-product-btn__link" id="tab-3" href="#content-marketing"> Reviews ( {{reviews.count }} ) </a>
+        </li>
+      </ul>
+  
+      <div class="tabs__panels flow">
+        <div id="advertising" aria-labelledby="tab-1">
+          <div>
+            {{product.description}}
+          </div>
+        </div>
+        <div id="social-media" aria-labelledby="tab-2">
+            <div>
+                <p>
+                    Your order of 100$ or more gets free standard delivery.
+                </p>
+                <p>Standard delivered 4-5 Business Days</p>
+                <p>Express delivered 2-4 Business Days</p>
+              </div>
+        </div>
+        <div id="content-marketing" aria-labelledby="tab-3">
+
+            {% for review in reviews %}
+            <div class="single-comment ">
+                <div class="user single-comment__item ">
+                    <div class="thumb single-comment__info">
+                        <img class="single-comment__user-image" src=" {{review.user.image.url}} " alt="" />
+                        <h3 class="single-comment__author"> {{review.user.username|title}} </h3>
+                        <div class="">
+                            <p class="single-comment__date"> {{review.date|date:"d M, Y"}} </p>
+                        </div>
+                    </div>
+                    <div class="single-comment__text desc">
+                        <p class=""> {{review.review}} </p>
+                    </div>
+                </div>
+            </div>
+
+ 
+            {% endfor %}
+
+
+            {% comment %} <div class="comment-form">
+                <h4 class="comment-form__title add-review">Add a review</h4>
+                <strong class="text-success" id="review-res" ></strong>
+                <div class="product-rate"></div>
+                <div class="row">
+                    <div class="">
+                        <form class="form-contact comment_form hide-comment-form " action=" {% url "catalog:ajax-add-review" product.id %} " id="commentForm" method="POST" >
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="">
+                                    <div class="comment-form__textarea form-group">
+                                        {{review_form.review}}
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                            <div class="form-group">
+                                <button type="submit" class="comment-form__button button button-contactForm">Submit Review</button>
+                            </div>
+                        </form>
+                    </div>
+                                        {% comment %} {{review_form.rating}} {% endcomment %}
+                </div> 
+
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</section>
+{% endblock  %}

@@ -12,16 +12,20 @@ def index(request):
     posts = Post.objects.all()
 
     context = {
-        'best_sellings': best_sellings,
         'new_arrivals': new_arrivals,
         'featured_products': featured_products,
         "title": "Sunline - main page",
         "content": "furniture ecommerce Sunline",
+        'best_sellings': best_sellings,
         "posts": posts
     }
     return render(request, "main/index.html", context)
 
 
+def best_selling(request, best_selling_slug):
+    best_selling = BestSelling.objects.get(slug=best_selling_slug)
 
-
-
+    context = {
+        'best_selling': best_selling
+    }
+    return render(request, 'main/best_product.html', context=context)

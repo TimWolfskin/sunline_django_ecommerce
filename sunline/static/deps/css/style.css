@@ -381,8 +381,6 @@ body {
 
 .top-slider {}
 
-.container {}
-
 .top-slider__container {}
 
 .top-slider__inner {}
@@ -405,10 +403,32 @@ body {
   line-height: 80px;
   font-weight: 400;
   margin-bottom: 7px;
-  color: #fff;
+  color: #2d3054;
 }
 
+.slider-sub-container {
 
+
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.slider-sub-title {
+
+  background-image: url('../top-slider/bg-price-slide.webp');
+  background-repeat: no-repeat;
+  height: 90px;
+
+  font-size: 22px;
+  line-height: 80px;
+  color: #2d3054;
+
+}
+
+.slider-sub-title span {
+  color: #F94073;
+}
 
 .top-slider__link {
   font-family: "Poppins", sans-serif;
@@ -468,23 +488,23 @@ body {
 
 
 .top-slider .slick-dots li.slick-active button {
-  border-color: #eb7025;
+  border-color: #F94073;
 }
 
 .top-slider .slick-dots li button::before {
   position: absolute;
   content: "";
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background-color: #8d8d8d;
+  background-color: #2d3054;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .top-slider .slick-dots li.slick-active button::before {
-  background-color: #eb7025;
+  background-color: #F94073;
 }
 
 .top-slider .slick-dots li button {
@@ -640,6 +660,23 @@ body {
   position: absolute;
   top: 15px;
   left: 15px;
+}
+
+.product-item__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product_id {
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 600;
+  color: #2d3054;
+}
+
+.product_id span{
+  font-weight: 300;
 }
 
 .product__active {}
@@ -1368,7 +1405,7 @@ body {
   font-weight: 700;
   font-size: 18px;
   line-height: 21px;
-  color: #000;
+  color: #2d3054;
 }
 
 .pagination--disabled {
@@ -1397,8 +1434,8 @@ body {
 }
 
 .pagination__link--active {
-  color: #ff6f00;
-  border: 2px solid #ff6f00;
+  color: #2d3054;
+  border: 2px solid #2d3054;
 }
 
 
@@ -1449,6 +1486,8 @@ body {
   margin: 88px 0 34px;
 }
 
+
+
 .single-product__inner {
   display: flex;
 }
@@ -1484,20 +1523,40 @@ body {
   gap: 20px;
 }
 
-.single-product-btn {
+.product__wishlist-btn {
   background-color: #2d3054;
   width: 40px;
   height: 40px;
   padding: 0;
   line-height: 40px;
   border: none;
-  transition: .4s;
+  transition: all .3s;
   border-radius: 50%;
   display: block;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.product__cart-btn {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  display: inline-block;
+  padding: 13px 50px;
+  margin-right: 20px;
+  border-radius: 30px;
+  line-height: 24px;
+  font-size: 19px;
+  transition: all .3s;
+  background-color: #2d3054;
+  color: #fff;
+}
+
+.product__wishlist-btn:hover,
+.product__cart-btn:hover {
+  background-color: #dc3545;
 }
 
 .single-product-tabs__container {
@@ -1767,6 +1826,76 @@ body {
   display: table;
 }
 
+.single-comment {
+  padding-top: 40px;
+}
+
+.single-comment__item {
+  padding-bottom: 30px;
+}
+
+.single-comment__user-image {
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.single-comment__info {
+  display: flex;
+  align-items: center;
+}
+
+.single-comment__author {
+  font-size: 21px;
+  line-height: 22px;
+  color: #2d3054;
+  font-weight: 400;
+  margin-right: 30px;
+}
+
+.single-comment__date {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 18px;
+  color: #2d3054;
+}
+
+.single-comment__text {
+  margin-left: 60px;
+  font-size: 16px;
+  line-height: 26px;
+  color: #000;
+}
+
+.comment-form__title {
+  font-family: Bubblegum Sans, cursive;
+  margin-bottom: 20px;
+  color: #2d3054;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+
+
+.comment-form__button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  display: inline-block;
+  padding: 13px 50px;
+  margin-right: 20px;
+  border-radius: 30px;
+  line-height: 24px;
+  font-size: 19px;
+  transition: all .3s;
+  background-color: #2d3054;
+  color: #fff;
+}
 
 /*============= страниа контакты ================
 =================================================
