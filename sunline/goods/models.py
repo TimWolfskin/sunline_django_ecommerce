@@ -1,16 +1,11 @@
 from email.policy import default
+from hashlib import blake2b
 from django.db import models
 from shortuuid.django_fields import ShortUUIDField
 from users.models import User
 from django.urls import reverse
 
-# RATING = (
-#     (1, '⭐✭✭✭✭'),
-#     (2, '⭐⭐✭✭✭'),
-#     (3, '⭐⭐⭐✭✭'),
-#     (4, '⭐⭐⭐⭐✭'),
-#     (5, '⭐⭐⭐⭐⭐'),
-# )
+
 
 class Categories(models.Model):
     name = models.CharField(max_length=150, unique=True)
@@ -25,17 +20,22 @@ class Categories(models.Model):
 
 
 class Products(models.Model):
-    # pid = ShortUUIDField(unique=True, length=10, max_length=20, alphabet='abcdefgh12345') 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(to=Categories, on_delete=models.CASCADE)
     name = models.CharField(max_length=150, unique=True)
     image = models.ImageField(upload_to='goods_images', blank=True, null=True)
-    description = models.TextField(max_length=200, unique=True, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     price = models.DecimalField(default=0.00, max_digits=7, decimal_places=2)
     discount = models.DecimalField(default=0.00, max_digits=4, decimal_places=2)
     color = models.CharField(max_length=50, blank=True, null=True)
     type = models.CharField(max_length=50, blank=True, null=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated = models.DateTimeField(null=True, blank=True)
+    featured = models.BooleanField(default=False)
+    product_shipping = models.CharField(max_length=50, blank=True, null=True)
+    product_return = models.CharField(max_length=50, blank=True, null=True)
+
 
     quantity = models.PositiveIntegerField(default=0)
 
@@ -58,7 +58,7 @@ class Products(models.Model):
             return round(self.price - self.price*self.discount/100, 2)
         
         return self.price
-    
+   
 
 
 class ProductReview(models.Model):

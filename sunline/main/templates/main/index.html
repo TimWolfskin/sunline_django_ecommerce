@@ -46,24 +46,45 @@
     </div>
   </section>
 
-  <section class="categories">
+  <section class="benifits">
     <div class="container">
-      <h2 class="categories__title">Shop By Category</h2>
-      <div class="categories__items">
-        {% tag_categories as categories %}
-        {% for category in categories %}
-        <div class="categories__item">
-          <a class="categories__item-image__link" href="{% url "catalog:index" category.slug %}"><img class="categories__item-image" src=" {{ category.image.url }} " alt="" /></a>
-          <a href="{% url "catalog:index" category.slug %}" class="categories__item-title">
-            {{ category.name }}
-            <span>
+      <h2 class="benifits__title">Our Benifits</h2>
+      <div class="benifits__items">
 
-                {{ product.count }} items
-
-            </span>
-          </a>
+        <div class="benifits__item">
+            <img class="benifits__item-image" src=" {% static 'deps/icons/delivery.svg' %}" alt="">
+          <p class="benifits__item-title">
+            Free Same-Day Delivery
+          </p>
         </div>
-      {% endfor %}
+
+        <div class="benifits__item">
+          <img class="benifits__item-image" src=" {% static 'deps/icons/service.svg' %}" alt="">
+          <p class="benifits__item-title">
+            Friendly Services
+          </p>
+        </div>
+
+        <div class="benifits__item">
+          <img class="benifits__item-image" src=" {% static 'deps/icons/payment.svg' %}" alt="">
+          <p class="benifits__item-title">
+            100% Secure Payment
+          </p>
+        </div>
+
+        <div class="benifits__item">
+          <img class="benifits__item-image" src=" {% static 'deps/icons/support.svg' %}" alt="">
+          <p class="benifits__item-title">
+            24/7 Help Center
+          </p>
+        </div>
+
+        <div class="benifits__item">
+          <img class="benifits__item-image" src=" {% static 'deps/icons/return.svg' %}" alt="">
+          <p class="benifits__item-title">
+            30 Day Return
+          </p>
+        </div>
 
       </div>
     </div>
@@ -71,53 +92,31 @@
   <section class="selling">
     <div class="container">
       <h3 class="title">Best Selling</h3>
-      <div class="selling__products">
-
-
-        {% for best_selling in best_sellings %}
-        <div class="product">
-          <div class="product__image">
-            <a href="{% url  'main:best_selling' best_selling.slug %}  ">
-              {% if best_selling.image %}
-                <img src="{{ best_selling.image.url }}" alt="" />
-              {% endif %}
-              <div class="product__discount">30%</div>
-              <div class="product__active"></div>
+      <div class="selling__products--slider">
+        {% for product in goods %}
+          <div class="product">
+            <div class="product__image">
+              {% if product.image %}
+              <a href="{% url 'catalog:product' product.slug %} ">
+                <img class="product__image" src=" {{product.image.url}} " alt="" />
             </a>
-          </div>
-          <div class="product__info">
-            <h5 class="product__category"><a href="">{{ best_selling.category }}</a></h5>
-            <a href="{% url  'main:best_selling' best_selling.slug %} " class="product__title">{{ best_selling.name }}</a>
-            <div class="product__price__container">
-              <p class="product__new-price">$ {{ best_selling.price }}</p>
-              <p class="product__old-price">$ 44</p>
+              {% endif %}
+              <div class="product__discount">%</div>
+              <div class="product__active"></div>
             </div>
-            <div class="product__btns-container">
-
-              <a class="product__cart-btn btn add-to-cart" href="{% url 'cart:cart_add' %}"
-              data-product-id=" {{best_selling.id}} "
-              >
-              {% csrf_token %}
-              Buy Now
-              </a>
-
-              
-              <a class="product__wishlist-btn btn add-to-wishlist" href="{% url 'wishlist:wishlist_add' %}"
-              data-product-id=" {{best_selling.id}} "
-              >
-              {% csrf_token %}
-              <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-              <svg width="28px" height="28px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15.7 4C18.87 4 21 6.98 21 9.76C21 15.39 12.16 20 12 20C11.84 20 3 15.39 3 9.76C3 6.98 5.13 4 8.3 4C10.12 4 11.31 4.91 12 5.71C12.69 4.91 13.88 4 15.7 4Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              </a>
-
+            <div class="product__info">
+              <div class="product-item__info">
+                <div class="product__category"> {{product.category}} </div>
+                <div class="product_id">ID: <span> {{product.id}} </span></div>
+              </div>
+              <a href="{% url 'catalog:product' product.slug %}" class="product__title"> {{product.name}} </a>
+              <div class="product__price__container">
+                <p class="product__new-price">$ {{product.sell_price}} </p>
+                <p class="product__old-price">$ </p>
+              </div>
+            </div>
           </div>
-          </div>
-        </div>
-      {% endfor %}
-
-
+        {% endfor %}
       </div>
     </div>
   </section>
@@ -148,190 +147,37 @@
       </div>
     </div>
   </section>
+
   <section class="featured-products">
     <div class="container">
       <h2 class="featured-products__title">Featured Products</h2>
-      <div class="featured-products__inner">
-        <div class="tabs-container">
-          <div class="featured-products__tabs-container">
-            <ul class="featured-products__tabs-list" aria-labelledby="tabs-title">
-              <li class="featured-products__tabs-list__item">
-                <a class="featured-products__tabs-btn" id="tab-1" href="#all-products">All Products</a>
-              </li>
-              <li class="featured-products__tabs-list__item">
-                <a class="featured-products__tabs-btn" id="tab-2" href="#dogs-food">Dogs Food</a>
-              </li>
-              <li class="featured-products__tabs-list__item">
-                <a class="featured-products__tabs-btn" id="tab-3" href="#cats-food">Cats Food</a>
-              </li>
-              <li class="featured-products__tabs-list__item">
-                <a class="featured-products__tabs-btn" id="tab-4" href="#accessories">Accessories</a>
-              </li>
-              <li class="featured-products__tabs-list__item">
-                <a class="featured-products__tabs-btn" id="tab-5" href="#pets-toys">Pets Toys</a>
-              </li>
-              <li class="featured-products__tabs-list__item">
-                <a class="featured-products__tabs-btn" id="tab-6" href="#fish-food">Fish Food</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="featured-products__items">
-            <div class="tabs__panels flow">
-              <div class="tabs__panels-item " id="all-products" aria-labelledby="tab-1">
-                {% for featured_product in featured_products %}
-                  <div class="product" id="all-products" aria-labelledby="tab-1">
-                    <div class="product__image">
-                      <a href="">
-                        {% if best_selling.image %}
-                          <img src="{{ featured_product.image.url }}" alt="" />
-                        {% endif %}
-                        <div class="product__discount">30%</div>
-                        <div class="product__active"></div>
-                      </a>
-                    </div>
-                    <div class="product__info">
-                      <h5 class="product__category"><a href="">{{ featured_product.category }}</a></h5>
-                      <p class="product__title">{{ featured_product.name }}</p>
-                      <div class="product__price__container">
-                        <p class="product__new-price">$ {{ featured_product.price }}</p>
-                        <p class="product__old-price">$ 44</p>
-                      </div>
-                    </div>
-                  </div>
-                {% endfor %}
+      <div class="featured-products__items">
+          {% for product in goods %}
+          {% if product.featured == True %}
+          <div class="product">
+            <div class="product__image">
+              {% if product.image %}
+              <a href="{% url 'catalog:product' product.slug %} ">
+                <img class="product__image" src=" {{product.image.url}} " alt="" />
+            </a>
+              {% endif %}
+              <div class="product__discount">%</div>
+              <div class="product__active"></div>
+            </div>
+            <div class="product__info">
+              <div class="product-item__info">
+                <div class="product__category"> {{product.category}} </div>
+                <div class="product_id">ID: <span> {{product.id}} </span></div>
               </div>
-
-              <div id="dogs-food" aria-labelledby="tab-2">
-                {% for featured_product in featured_products %}
-                  {% if featured_product.group == 'accessories' %}
-                    <div class="product" id="dogs-food" aria-labelledby="tab-2">
-                      <div class="product__image">
-                        <a href="">
-                          {% if best_selling.image %}
-                            <img src="{{ featured_product.image.url }}" alt="" />
-                          {% endif %}
-                          <div class="product__discount">30%</div>
-                          <div class="product__active"></div>
-                        </a>
-                      </div>
-                      <div class="product__info">
-                        <h5 class="product__category"><a href="">{{ featured_product.category }}</a></h5>
-                        <p class="product__title">{{ featured_product.name }}</p>
-                        <div class="product__price__container">
-                          <p class="product__new-price">$ {{ featured_product.price }}</p>
-                          <p class="product__old-price">$ 44</p>
-                        </div>
-                      </div>
-                    </div>
-                  {% endif %}
-                {% endfor %}
-              </div>
-              <div id="cats-food" aria-labelledby="tab-3">
-                {% for featured_product in featured_products %}
-                  {% if featured_product.group == 'accessories' %}
-                    <div class="product" id="cats-food" aria-labelledby="tab-3">
-                      <div class="product__image">
-                        <a href="">
-                          {% if best_selling.image %}
-                            <img src="{{ featured_product.image.url }}" alt="" />
-                          {% endif %}
-                          <div class="product__discount">30%</div>
-                          <div class="product__active"></div>
-                        </a>
-                      </div>
-                      <div class="product__info">
-                        <h5 class="product__category"><a href="">{{ featured_product.category }}</a></h5>
-                        <p class="product__title">{{ featured_product.name }}</p>
-                        <div class="product__price__container">
-                          <p class="product__new-price">$ {{ featured_product.price }}</p>
-                          <p class="product__old-price">$ 44</p>
-                        </div>
-                      </div>
-                    </div>
-                  {% endif %}
-                {% endfor %}
-              </div>
-              <div id="accessories" aria-labelledby="tab-4">
-                {% for featured_product in featured_products %}
-                  {% if featured_product.group == 'accessories' %}
-                    <div class="product" id="accessories" aria-labelledby="tab-4">
-                      <div class="product__image">
-                        <a href="">
-                          {% if best_selling.image %}
-                            <img src="{{ featured_product.image.url }}" alt="" />
-                          {% endif %}
-                          <div class="product__discount">30%</div>
-                          <div class="product__active"></div>
-                        </a>
-                      </div>
-                      <div class="product__info">
-                        <h5 class="product__category"><a href="">{{ featured_product.category }}</a></h5>
-                        <p class="product__title">{{ featured_product.name }}</p>
-                        <div class="product__price__container">
-                          <p class="product__new-price">$ {{ featured_product.price }}</p>
-                          <p class="product__old-price">$ 44</p>
-                        </div>
-                      </div>
-                    </div>
-                  {% endif %}
-                {% endfor %}
-              </div>
-
-              <div id="pets-toys" aria-labelledby="tab-5">
-                {% for featured_product in featured_products %}
-                  {% if featured_product.group == 'pets_toys' %}
-                    <div class="product" id="pets-toys" aria-labelledby="tab-5">
-                      <div class="product__image">
-                        <a href="">
-                          {% if best_selling.image %}
-                            <img src="{{ featured_product.image.url }}" alt="" />
-                          {% endif %}
-                          <div class="product__discount">30%</div>
-                          <div class="product__active"></div>
-                        </a>
-                      </div>
-                      <div class="product__info">
-                        <h5 class="product__category"><a href="">{{ featured_product.category }}</a></h5>
-                        <p class="product__title">{{ featured_product.name }}</p>
-                        <div class="product__price__container">
-                          <p class="product__new-price">$ {{ featured_product.price }}</p>
-                          <p class="product__old-price">$ 44</p>
-                        </div>
-                      </div>
-                    </div>
-                  {% endif %}
-                {% endfor %}
-              </div>
-
-              <div id="fish-food" aria-labelledby="tab-6">
-                {% for featured_product in featured_products %}
-                  {% if featured_product.group == 'fish_food' %}
-                    <div class="product" id="fish-food" aria-labelledby="tab-4">
-                      <div class="product__image">
-                        <a href="">
-                          {% if best_selling.image %}
-                            <img src="{{ featured_product.image.url }}" alt="" />
-                          {% endif %}
-                          <div class="product__discount">30%</div>
-                          <div class="product__active"></div>
-                        </a>
-                      </div>
-                      <div class="product__info">
-                        <h5 class="product__category"><a href="">{{ featured_product.category }}</a></h5>
-                        <p class="product__title">{{ featured_product.name }}</p>
-                        <div class="product__price__container">
-                          <p class="product__new-price">$ {{ featured_product.price }}</p>
-                          <p class="product__old-price">$ 44</p>
-                        </div>
-                      </div>
-                    </div>
-                  {% endif %}
-                {% endfor %}
+              <a href="{% url 'catalog:product' product.slug %}" class="product__title"> {{product.name}} </a>
+              <div class="product__price__container">
+                <p class="product__new-price">$ {{product.sell_price}} </p>
+                <p class="product__old-price">$ </p>
               </div>
             </div>
           </div>
-        </div>
+          {% endif %}
+          {% endfor %}
       </div>
     </div>
   </section>
@@ -341,34 +187,32 @@
       <h3 class="new-arrivals__title">New Arrivals</h3>
       <div class="new-arrivals__inner">
         <div class="new-arrivals__items">
-          {% for new_arrival in new_arrivals %}
-
+          {% for product in goods %}
           <div class="new-arrivals__item">
             <div class="new-arrivals__item-image">
-              <a href="">
-                <img src=" {{new_arrival.image.url}} " alt="">
+              {% if product.image %}
+              <a href="{% url 'catalog:product' product.slug %}">
+                <img src=" {{product.image.url}} " alt="">
               </a>
+              {% endif %}
             </div>
             <div class="new-arrivals__item-label"></div>
             <div class="new-arrivals__item-info">
               <a class="new-arrivals__item-vendor" href="">
-                {{new_arrival.category}}
+                {{product.category}}
               </a>
-              <a class="new-arrivals__item-name" href="">
-                {{new_arrival.name}}
+              <a class="new-arrivals__item-name" href="{% url 'catalog:product' product.slug %}">
+                {{product.name}}
               </a>
               <div class="new-arrivals__item-price_container">
                 <p class="new-arrivals__item-new__price">
-                  {{new_arrival.price}}
+                  {{product.price}}
                 </p>
                 <p class="new-arrivals__item-old__price"></p>
               </div>
             </div>
           </div>
-
           {% endfor %}
-
-
         </div>
       </div>
     </div>

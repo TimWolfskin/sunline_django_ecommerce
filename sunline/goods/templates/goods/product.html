@@ -55,14 +55,17 @@
                     <span class="single-product__price">$ {{product.price}} </span>
                 </div>
                 <div class="single-product__info">
-                    <div class="product-info__text">
-                       Product id: {{product.id}}
+                    <div class="single-product__id">
+                       Product id: <span>{{product.id}}</span>
                     </div>
-                    <div class="product-info__text">
-                       Category: {{product.category}}
+                    <div class="single-product__category">
+                       Category: <span>{{product.category}}</span>
+                     </div>
+                     <div class="single-product__shipping">
+                        {{product.product_shipping}}
                      </div>
                 </div>
-                <div class="single-product__description">
+                <div class="single-product__descr">
                     {{product.description}}
                 </div>
                 <div class="product__btns-container">
@@ -114,12 +117,9 @@
         </div>
         <div id="social-media" aria-labelledby="tab-2">
             <div>
-                <p>
-                    Your order of 100$ or more gets free standard delivery.
-                </p>
-                <p>Standard delivered 4-5 Business Days</p>
-                <p>Express delivered 2-4 Business Days</p>
-              </div>
+                <p> {{ product.product_shipping }} </p>
+                <p> {{product.product_return}} </p>
+            </div>
         </div>
         <div id="content-marketing" aria-labelledby="tab-3">
             {% comment %} {% for review in reviews %}

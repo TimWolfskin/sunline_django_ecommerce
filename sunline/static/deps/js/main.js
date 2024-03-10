@@ -1,5 +1,3 @@
-
-
 $(".top-slider__inner").slick({
   dots: true,
   arrows: false,
@@ -7,6 +5,15 @@ $(".top-slider__inner").slick({
   autoplay: true,
 });
 
+$(".selling__products--slider").slick({
+  prevArrow:
+    '<button type="button" class="slick-prev"><svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.63388 0.616117C10.122 1.10427 10.122 1.89573 9.63388 2.38388L3.01777 9L9.63388 15.6161C10.122 16.1043 10.122 16.8957 9.63388 17.3839C9.14573 17.872 8.35427 17.872 7.86612 17.3839L0.366117 9.88388C-0.122039 9.39573 -0.122039 8.60427 0.366117 8.11612L7.86612 0.616117C8.35427 0.127961 9.14573 0.127961 9.63388 0.616117Z" fill="#fff"/>   </svg> </button>',
+  nextArrow:
+    '<button type="button" class="slick-next"><svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.366117 0.616117C0.854272 0.127961 1.64573 0.127961 2.13388 0.616117L9.63388 8.11612C10.122 8.60427 10.122 9.39573 9.63388 9.88388L2.13388 17.3839C1.64573 17.872 0.854272 17.872 0.366117 17.3839C-0.122039 16.8957 -0.122039 16.1043 0.366117 15.6161L6.98223 9L0.366117 2.38388C-0.122039 1.89573 -0.122039 1.10427 0.366117 0.616117Z" fill="#fff"/>  </svg> </button>',
+  lazyLoad: "ondemand",
+  slidesToShow: 4,
+  slidesToScroll: 1,
+});
 
 const tabsContainer = document.querySelector(".tabs-container");
 const tabsList = tabsContainer.querySelector("ul");
@@ -101,13 +108,3 @@ function switchTab(newTab) {
   newTab.setAttribute("tabindex", "0");
   newTab.focus();
 }
-
-
-
-
-
-
-
-
-
-

@@ -35,7 +35,7 @@ def catalog(request, category_slug=None):
     if on_color:
         goods = goods.filter(color__icontains=on_color)
 
-    paginator = Paginator(goods, 3)
+    paginator = Paginator(goods, 8)
     current_page = paginator.page(int(page))
 
     context = {
@@ -49,37 +49,23 @@ def catalog(request, category_slug=None):
 
 def product(request, product_slug):
     product = Products.objects.get(slug=product_slug)
-    # product = Products.objects.get(pid=pid)
 
-    # products = Products.objects.filter(category=product.category) #.exclude(pid=pid)
-
-    #getting all reviews related to a product
     reviews = ProductReview.objects.filter(product=product).order_by("-date")
 
-    # #getting average review
-    # average_rating = ProductReview.objects.filter(product=product).aggregate(rating=Avg('rating'))
+
 
     #review form
     review_form = ProductReviewForm()
 
     make_review = True
 
-    # if request.user.is_authenticated:
-    #     user_review_count = ProductReveiw.objects.filter(user=request.user, product=product).count()
 
-    #     if user_review_count > 0:
-    #         make_review = False
-
-    # product_image = product.product_images.all()
 
     context = {
         "product": product,  
         "review_form": review_form,
         "make_review": make_review,
         "reviews": reviews,
-        # "average_rating": average_rating,
-        # "product_image": product_image,
-        # "products": products
     }
 
 
